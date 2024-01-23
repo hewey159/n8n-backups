@@ -1,0 +1,97 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Shopify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shopify": {
+      "main": [
+        [
+          {
+            "node": "Shopify1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-18T11:22:10.137Z",
+  "id": "CUcJIb0Vp9VesnEj",
+  "meta": null,
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "9e8699d2-c059-485e-b679-b9286647da3c",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "accessToken",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "54063f8f-1353-42c4-9971-f9823d355330",
+      "name": "Shopify",
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        540
+      ],
+      "credentials": {
+        "shopifyAccessTokenApi": {
+          "id": "zKYJyGyRGR4R2Vmm",
+          "name": "Shopify Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "accessToken",
+        "operation": "get",
+        "orderId": "1014",
+        "options": {}
+      },
+      "id": "049bd8e0-dfdd-44b2-87bc-f8279bf94a3d",
+      "name": "Shopify1",
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        540
+      ],
+      "credentials": {
+        "shopifyAccessTokenApi": {
+          "id": "zKYJyGyRGR4R2Vmm",
+          "name": "Shopify Access Token account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-22T22:05:13.000Z",
+  "versionId": "d3490825-d98a-4af0-832e-9dfd275b3b7e"
+}
