@@ -1,0 +1,334 @@
+{
+  "active": true,
+  "connections": {
+    "Google Cloud Firestore": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Shopify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shopify": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Cloud Firestore",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-17T02:46:54.332Z",
+  "id": "kNEINPrtmQNTZajr",
+  "meta": null,
+  "name": "firebase check",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "id": "a4ed06a0-739b-4249-8c62-e271953da8ed",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1140,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "projectId": "voice-recorder-53502",
+        "collection": "recordings",
+        "returnAll": true
+      },
+      "id": "470a71e1-1544-46cd-b9f3-4dfa370905ac",
+      "name": "Google Cloud Firestore",
+      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        540
+      ],
+      "credentials": {
+        "googleFirebaseCloudFirestoreOAuth2Api": {
+          "id": "eTvDQN3NeFkY1j3t",
+          "name": "Google Firebase Cloud Firestore account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getTimeBetweenDates",
+        "startDate": "={{ $json.updatedAt }}",
+        "endDate": "={{ $now }}",
+        "units": [
+          "hour",
+          "minute",
+          "day"
+        ],
+        "options": {}
+      },
+      "id": "1b6c428a-3717-4724-aabc-fc7c9a533ea4",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1580,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "20ee6c9e-083c-4f45-9324-b896ec5fa68a",
+              "leftValue": "={{ $json.timeDifference.minutes }}",
+              "rightValue": 5,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            },
+            {
+              "id": "00f46dc1-c515-4b7b-bcdd-f149da15c5fa",
+              "leftValue": "={{ $json.timeDifference.hours }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "22cf77f6-5d88-4b45-bfae-5f703e171c7b",
+              "leftValue": "={{ $json.timeDifference.days }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f76dfa32-a4c7-4788-8ef7-9b95b2462e63",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1820,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "accessToken",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "ef6cf024-aa3e-4027-a9e4-1a21f3456b0d",
+      "name": "Shopify",
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [
+        2040,
+        560
+      ],
+      "credentials": {
+        "shopifyAccessTokenApi": {
+          "id": "zKYJyGyRGR4R2Vmm",
+          "name": "Shopify Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "fa0d421b-4c03-41a4-82c0-d2577c9caeac",
+              "leftValue": "={{ $json.order_number }}",
+              "rightValue": 1013,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d3493479-8fc5-4e36-a382-1da2173bf684",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2260,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "firebase file",
+        "bodyContent": "=Uploaded file to firebase, yay! {{ $json.contact_email }}",
+        "additionalFields": {}
+      },
+      "id": "0b5fd3c4-d515-4d55-b2f5-2ee4622165fc",
+      "name": "Microsoft Outlook",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        2480,
+        560
+      ],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "kk1sPj8USL1RL0GY",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "every 5 minutes this gets triggered\n\nit will look in the firestore DB and check if there are any new recordings. if there is send an email saying thank you for recording. To sdo this we need to get extra information from shopify e.g. (email/order number)",
+        "height": 214,
+        "width": 390
+      },
+      "id": "0b3ae8e2-fcde-4fd7-ab01-b7ba86ff2ca5",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "TODO:\n- the updated and created fields are always the same and when you update an audio file it doe3sn;t update the firestore updatedAt field (i assume because i was testing this with the same audio upload??)\n\n- this will only send a shitty draft email - need to send an actual email\n- there should be two different emails. one for the inital thanks for uploading and one for the thanks for updating the voice message.",
+        "height": 273,
+        "width": 723
+      },
+      "id": "e566b3bb-6795-4607-a17f-afa17b73c20c",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2060,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "content": "I don;t have to use the 5 mminutee thing, i could use firebase trigger and deploy a simple python app and then use a webhook and pass the data I need through, or just make it get all the documents, like its currently doing",
+        "height": 196,
+        "width": 233,
+        "color": 7
+      },
+      "id": "f9255125-182e-402a-ab5b-d7e8d8d6a693",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        320
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Australia/Adelaide",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-01-19T06:29:12.584Z",
+      "updatedAt": "2024-01-19T06:29:12.584Z",
+      "id": "gCNcHFCa5bC8SDJy",
+      "name": "scheduled"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-19T06:29:49.000Z",
+  "versionId": "8e2c334a-89b9-4f59-89d1-54d47a9114aa"
+}
