@@ -1,0 +1,383 @@
+{
+  "active": true,
+  "connections": {
+    "Google Cloud Firestore": {
+      "main": [
+        [
+          {
+            "node": "Filter3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shopify": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter3": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Google Cloud Firestore",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Shopify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-18T01:42:41.391Z",
+  "id": "yEOJlUUT6Ql1vWJE",
+  "meta": null,
+  "name": "Send reminder email 15 days - final",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "Reminder to send audio\n\n- gets all orders from shopify every day\n- gets the delievery date for all the orders (using the tag)\n- compares the date and current time to see if they are between 31 and 30 days apart.\n- if they are 30 days until the event, we then cehck firestore to see if they have uploaded the audio. if they haven't we then send them an email",
+        "height": 176,
+        "width": 524
+      },
+      "id": "b8a57122-4b8e-4872-b2f9-e1a4a95feb37",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "content": "TODO:\n- when the delevier date can;t be found send an error email to me, incase there is a problem\n- i should bcc myself in these emails so i know they are working (i might only ahve to do this inially and once i'm confident this can be remvoed')\n- keep track of the emails sent in some sort of database ??\n- make emails look good",
+        "height": 176,
+        "width": 524
+      },
+      "id": "31eb2430-f10c-41de-8427-b06e136696b7",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "projectId": "voice-recorder-53502",
+        "collection": "recordings",
+        "documentId": "={{ $('Shopify').item.json.order_number }}"
+      },
+      "id": "5f923d46-8432-49ea-b88e-53216a16c5fb",
+      "name": "Google Cloud Firestore",
+      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
+      "typeVersion": 1,
+      "position": [
+        2600,
+        540
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleFirebaseCloudFirestoreOAuth2Api": {
+          "id": "eTvDQN3NeFkY1j3t",
+          "name": "Google Firebase Cloud Firestore account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "need to send audio for order",
+        "bodyContent": "={{ $('Shopify').item.json.order_number }}\n\nplease use the following link to upload the order. only 30 days until youir event!!",
+        "additionalFields": {}
+      },
+      "id": "8aa6fafb-9fd3-42bc-87eb-0b73202f4612",
+      "name": "Microsoft Outlook",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        3080,
+        540
+      ],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "kk1sPj8USL1RL0GY",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "accessToken",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "6c3a5f79-4cb5-4fdb-875f-5d319579f396",
+      "name": "Shopify",
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        540
+      ],
+      "credentials": {
+        "shopifyAccessTokenApi": {
+          "id": "zKYJyGyRGR4R2Vmm",
+          "name": "Shopify Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "6275442a-9fdb-4b18-ad25-150beaf59a74",
+              "leftValue": "={{ $json }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f03cdc73-0a61-4648-afc7-8b3077f3720f",
+      "name": "Filter3",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2820,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.tags }}",
+        "format": "yyyy/MM/dd",
+        "options": {}
+      },
+      "id": "7ad96bbb-c0bc-42af-8f9f-0075b7325cd0",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        540
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "25c8ea65-b482-4658-a483-290d0397e9dc",
+              "leftValue": "={{ $json.formattedDate }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "110e1b92-dc29-49f4-8fc2-d6dc7553d5d3",
+              "leftValue": "={{ $json.formattedDate }}",
+              "rightValue": "=1970/01/01",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ac0ec2b9-9bd9-4f0a-a015-288483bd4f28",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getTimeBetweenDates",
+        "startDate": "={{ $now }}",
+        "endDate": "={{ $json.formattedDate }}",
+        "options": {}
+      },
+      "id": "9bfcadd0-5b26-410f-a37e-70ece3312451",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "e1122e34-b79e-4367-9b95-c85c83f2fe30",
+              "leftValue": "={{ $json.timeDifference.days }}",
+              "rightValue": 16,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            },
+            {
+              "id": "899f28f9-815d-4f48-86f4-ceb406569469",
+              "leftValue": "={{ $json.timeDifference.days }}",
+              "rightValue": 15,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "bed76a56-8d8c-4126-859d-3d26fd903eb7",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "bf4b4aa3-67c5-4485-82a2-b2a2b8c1d5e4",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1240,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-01-19T06:29:12.584Z",
+      "updatedAt": "2024-01-19T06:29:12.584Z",
+      "id": "gCNcHFCa5bC8SDJy",
+      "name": "scheduled"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-19T06:30:10.000Z",
+  "versionId": "23303239-0dd1-4af5-8599-c0f10bb2b785"
+}
