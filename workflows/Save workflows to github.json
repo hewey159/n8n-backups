@@ -405,7 +405,7 @@
       "name": "Note",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -720,
+        -760,
         380
       ],
       "typeVersion": 1
@@ -491,6 +491,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-01-23T02:12:36.000Z",
-  "versionId": "681bb283-a15f-490b-bcab-fddbd5105a5f"
+  "updatedAt": "2024-01-23T02:14:30.000Z",
+  "versionId": "9015f579-8510-44f5-84a3-e91e60e630d3"
 }
