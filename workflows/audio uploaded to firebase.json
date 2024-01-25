@@ -1,0 +1,243 @@
+{
+  "active": true,
+  "connections": {
+    "Shopify": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Shopify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-17T02:46:54.332Z",
+  "id": "kNEINPrtmQNTZajr",
+  "meta": null,
+  "name": "audio uploaded to firebase",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "accessToken",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "ef6cf024-aa3e-4027-a9e4-1a21f3456b0d",
+      "name": "Shopify",
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [
+        2060,
+        560
+      ],
+      "credentials": {
+        "shopifyAccessTokenApi": {
+          "id": "zKYJyGyRGR4R2Vmm",
+          "name": "Shopify Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "fa0d421b-4c03-41a4-82c0-d2577c9caeac",
+              "leftValue": "={{ $json.order_number.toString() }}",
+              "rightValue": "={{ $('Webhook').item.json.body.order }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d3493479-8fc5-4e36-a382-1da2173bf684",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2260,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "toRecipients": "heweywade@hotmail.com",
+        "subject": "Thank you for uploading your Recording!",
+        "bodyContent": "= {{ $json.contact_email }} {{ $json.order_number }}",
+        "additionalFields": {
+          "bccRecipients": "wade@voicekeepsakes.com.au"
+        }
+      },
+      "id": "0b5fd3c4-d515-4d55-b2f5-2ee4622165fc",
+      "name": "Microsoft Outlook",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        2480,
+        560
+      ],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "kk1sPj8USL1RL0GY",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "triggered on firebase function\n\nit will look in the firestore DB and check if there are any new recordings. if there is send an email saying thank you for recording. To sdo this we need to get extra information from shopify e.g. (email/order number)",
+        "height": 189.22267441860467,
+        "width": 390
+      },
+      "id": "0b3ae8e2-fcde-4fd7-ab01-b7ba86ff2ca5",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "TODO:\n- the updated and created fields are always the same and when you update an audio file it doe3sn;t update the firestore updatedAt field (i assume because i was testing this with the same audio upload??)\n\n- this will only send a shitty draft email - need to send an actual email\n- there should be two different emails. one for the inital thanks for uploading and one for the thanks for updating the voice message.",
+        "height": 273,
+        "width": 723
+      },
+      "id": "e566b3bb-6795-4607-a17f-afa17b73c20c",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2060,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "content": "using a simple firebase deploy function to call this webhook https://github.com/hewey159/firebase-functions-audio-uploaded\n\nwe could extend it to actually get the data in the webhook but it's just as easy to get the one",
+        "height": 98.10772833723645,
+        "width": 292.25058548009343,
+        "color": 4
+      },
+      "id": "f9255125-182e-402a-ab5b-d7e8d8d6a693",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        940,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "46f9bbdc-35a4-4815-8873-ad6c8cb46a5c",
+        "options": {}
+      },
+      "id": "b8dbd69a-aad7-4ff2-967c-c5a4fdf7dd2a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1820,
+        560
+      ],
+      "webhookId": "46f9bbdc-35a4-4815-8873-ad6c8cb46a5c"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "localhost:5678",
+            "accept-encoding": "gzip",
+            "x-forwarded-for": "2600:1900:2000:a6::1:1500, 172.70.179.71",
+            "cf-ray": "849de718185a639e-ORD",
+            "x-forwarded-proto": "https",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "accept": "*/*",
+            "accept-language": "*",
+            "sec-fetch-mode": "cors",
+            "user-agent": "node",
+            "cf-connecting-ip": "2600:1900:2000:a6::1:1500",
+            "cdn-loop": "cloudflare",
+            "cf-ipcountry": "US",
+            "x-forwarded-host": "automation.voicekeepsakes.com.au",
+            "x-forwarded-server": "127.0.0.1",
+            "content-length": "147",
+            "connection": "Keep-Alive"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "bucket": "voice-recorder-53502.appspot.com",
+            "path": "recordings/1010.wav",
+            "orderNumberEncoded": "MTAxMA==",
+            "order": "1010",
+            "updatedAt": 1705990529475
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Australia/Adelaide",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-01-19T06:29:17.907Z",
+      "updatedAt": "2024-01-19T06:29:17.907Z",
+      "id": "9Wlg3x6juVGk3V4C",
+      "name": "triggered"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-24T21:14:41.000Z",
+  "versionId": "d32953b2-cb90-437d-ab50-593883b4c400"
+}
