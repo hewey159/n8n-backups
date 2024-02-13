@@ -191,7 +191,7 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "function formatDate(inputDate) {\n  // Create a Date object from the input date string\n  const dateObject = new Date(inputDate);\n  if (isNaN(dateObject)){\n    return null\n  }\n  \n\n  // Extract year, month, and day components\n  const year = dateObject.getFullYear();\n  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n  const day = String(dateObject.getDate()).padStart(2, '0');\n\n  // Create the formatted date string in \"yyyy-mm-dd\" format\n  const formattedDate = `${year}/${month}/${day}`;\n\n  return formattedDate;\n}\n\n// Example usage:\nconst tags = $('Shopify Trigger').item.json.tags.split(','); //tags are split by ',' in shopify\nconst result = tags.map((tag) => formatDate(tag))\nconst filteredArray = result.filter(value => value !== null);\n\nif(filteredArray.length != 1){\n  $input.item.json.formattedDate = null\n}\nelse {\n  $input.item.json.formattedDate = filteredArray[0]\n}\n\n\n// const formattedDateString = formatDate(inputDateString);\n// $input.item.json.formattedDate = result\n// return { filteredArray, tags }\nreturn $input.item;"
+        "jsCode": "// function formatDate(inputDate) {\n//   // Create a Date object from the input date string\n//   const dateObject = new Date(inputDate);\n//   if (isNaN(dateObject)){\n//     return null\n//   }\n  \n\n//   // Extract year, month, and day components\n//   const year = dateObject.getFullYear();\n//   const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n//   const day = String(dateObject.getDate()).padStart(2, '0');\n\n//   // Create the formatted date string in \"yyyy-mm-dd\" format\n//   const formattedDate = `${year}/${month}/${day}`;\n\n//   return formattedDate;\n// }\n\n// // Example usage:\n// const tags = $('Shopify Trigger').item.json.line_items[0];\n// const result = tags.map((tag) => formatDate(tag))\n// const filteredArray = result.filter(value => value !== null);\n\n// if(filteredArray.length != 1){\n//   $input.item.json.formattedDate = null\n// }\n// else {\n//   $input.item.json.formattedDate = filteredArray[0]\n// }\n\n$input.item.json.formattedDate = null\n\n// const formattedDateString = formatDate(inputDateString);\n// $input.item.json.formattedDate = result\n// return { filteredArray, tags }\nreturn $input.item;"
       },
       "id": "8c383125-d678-4893-ad06-fcf69f7dafd8",
       "name": "Code2",
@@ -242,7 +242,7 @@
       "parameters": {
         "toRecipients": "heweywade@hotmail.com",
         "subject": "New order sends email - something went wrong",
-        "bodyContent": "={{ $('Shopify Trigger').item.json.order_number }}",
+        "bodyContent": "=Something went wrong please check n8n ",
         "additionalFields": {}
       },
       "id": "48050db9-82fa-4562-8c55-9a56fd0faddf",
@@ -265,62 +265,62 @@
     "Shopify Trigger": [
       {
         "json": {
-          "id": 5667062448420,
-          "admin_graphql_api_id": "gid://shopify/Order/5667062448420",
-          "app_id": 1354745,
-          "browser_ip": "122.199.33.41",
+          "id": 5705403498788,
+          "admin_graphql_api_id": "gid://shopify/Order/5705403498788",
+          "app_id": 580111,
+          "browser_ip": "49.183.145.201",
           "buyer_accepts_marketing": false,
           "cancel_reason": null,
           "cancelled_at": null,
-          "cart_token": null,
-          "checkout_id": 37182890410276,
-          "checkout_token": "78aa737e58ed12d263950c4f390904d7",
+          "cart_token": "208ed42a5ce3391824b3f59da1d231e5",
+          "checkout_id": 37245758505252,
+          "checkout_token": "af030910d55c4c7388dc29636929204c",
           "client_details": {
-            "accept_language": null,
+            "accept_language": "en",
             "browser_height": null,
-            "browser_ip": "122.199.33.41",
+            "browser_ip": "49.183.145.201",
             "browser_width": null,
             "session_hash": null,
-            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            "user_agent": "Mozilla/5.0 (Linux; Android 14; SAMSUNG SM-G990E) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/23.0 Chrome/115.0.0.0 Mobile Safari/537.36"
           },
           "closed_at": null,
-          "confirmation_number": "PV0WY78HY",
+          "confirmation_number": "HGJP0WGKF",
           "confirmed": true,
-          "contact_email": null,
-          "created_at": "2024-01-17T13:00:19+10:30",
+          "contact_email": "catherineann084@gmail.com",
+          "created_at": "2024-02-13T15:06:01+10:30",
           "currency": "AUD",
-          "current_subtotal_price": "0.00",
+          "current_subtotal_price": "245.00",
           "current_subtotal_price_set": {
             "shop_money": {
-              "amount": "0.00",
+              "amount": "245.00",
               "currency_code": "AUD"
             },
             "presentment_money": {
-              "amount": "0.00",
+              "amount": "245.00",
               "currency_code": "AUD"
             }
           },
           "current_total_additional_fees_set": null,
-          "current_total_discounts": "0.00",
+          "current_total_discounts": "105.00",
           "current_total_discounts_set": {
             "shop_money": {
-              "amount": "0.00",
+              "amount": "105.00",
               "currency_code": "AUD"
             },
             "presentment_money": {
-              "amount": "0.00",
+              "amount": "105.00",
               "currency_code": "AUD"
             }
           },
           "current_total_duties_set": null,
-          "current_total_price": "0.00",
+          "current_total_price": "245.00",
           "current_total_price_set": {
             "shop_money": {
-              "amount": "0.00",
+              "amount": "245.00",
               "currency_code": "AUD"
             },
             "presentment_money": {
-              "amount": "0.00",
+              "amount": "245.00",
               "currency_code": "AUD"
             }
           },
@@ -337,81 +337,89 @@
           },
           "customer_locale": "en",
           "device_id": null,
-          "discount_codes": [],
-          "email": "",
+          "discount_codes": [
+            {
+              "code": "LOVE30",
+              "amount": "105.00",
+              "type": "percentage"
+            }
+          ],
+          "email": "catherineann084@gmail.com",
           "estimated_taxes": false,
           "financial_status": "paid",
           "fulfillment_status": null,
-          "landing_site": null,
+          "landing_site": "/",
           "landing_site_ref": null,
-          "location_id": 86684926244,
+          "location_id": null,
           "merchant_of_record_app_id": null,
-          "name": "#1016",
+          "name": "#1021",
           "note": null,
           "note_attributes": [],
-          "number": 16,
-          "order_number": 1016,
-          "order_status_url": "https://voicekeepsakes.com.au/78539129124/orders/8b4cfd613258864973e86ab7cd050dc7/authenticate?key=47c63fb1d0370a71d913032c18df5e44",
+          "number": 21,
+          "order_number": 1021,
+          "order_status_url": "https://voicekeepsakes.com.au/78539129124/orders/3434434adc814f844fc5b646d583fa71/authenticate?key=38c779800e5c5ecc33c58209ca8d5995",
           "original_total_additional_fees_set": null,
           "original_total_duties_set": null,
-          "payment_gateway_names": [],
+          "payment_gateway_names": [
+            "paypal"
+          ],
           "phone": null,
           "po_number": null,
           "presentment_currency": "AUD",
-          "processed_at": "2024-01-17T13:00:19+10:30",
-          "reference": "4ea35b7021c6dfd74d2755dcd2c7d7b1",
-          "referring_site": null,
-          "source_identifier": "4ea35b7021c6dfd74d2755dcd2c7d7b1",
-          "source_name": "shopify_draft_order",
+          "processed_at": "2024-02-13T15:05:57+10:30",
+          "reference": "d918ef0793be3628550c273711b62335",
+          "referring_site": "https://www.google.com/",
+          "source_identifier": "d918ef0793be3628550c273711b62335",
+          "source_name": "web",
           "source_url": null,
-          "subtotal_price": "0.00",
+          "subtotal_price": "245.00",
           "subtotal_price_set": {
             "shop_money": {
-              "amount": "0.00",
+              "amount": "245.00",
               "currency_code": "AUD"
             },
             "presentment_money": {
-              "amount": "0.00",
+              "amount": "245.00",
               "currency_code": "AUD"
             }
           },
-          "tags": "Sat Apr 13 2024",
+          "tags": "",
           "tax_exempt": false,
           "tax_lines": [],
           "taxes_included": true,
           "test": false,
-          "token": "8b4cfd613258864973e86ab7cd050dc7",
-          "total_discounts": "0.00",
+          "token": "3434434adc814f844fc5b646d583fa71",
+          "total_discounts": "105.00",
           "total_discounts_set": {
             "shop_money": {
-              "amount": "0.00",
+              "amount": "105.00",
               "currency_code": "AUD"
             },
             "presentment_money": {
-              "amount": "0.00",
+              "amount": "105.00",
               "currency_code": "AUD"
             }
           },
-          "total_line_items_price": "0.00",
+          "total_line_items_price": "350.00",
           "total_line_items_price_set": {
             "shop_money": {
-              "amount": "0.00",
+              "amount": "350.00",
               "currency_code": "AUD"
             },
             "presentment_money": {
-              "amount": "0.00",
+              "amount": "350.00",
               "currency_code": "AUD"
             }
           },
           "total_outstanding": "0.00",
-          "total_price": "0.00",
+          "total_price": "245.00",
           "total_price_set": {
             "shop_money": {
-              "amount": "0.00",
+              "amount": "245.00",
               "currency_code": "AUD"
             },
             "presentment_money": {
-              "amount": "0.00",
+              "amount": "245.00",
               "currency_code": "AUD"
             }
           },
@@ -437,44 +445,117 @@
             }
           },
           "total_tip_received": "0.00",
-          "total_weight": 0,
-          "updated_at": "2024-01-17T13:00:20+10:30",
-          "user_id": 99699032356,
-          "billing_address": null,
-          "customer": null,
-          "discount_applications": [],
+          "total_weight": 2000,
+          "updated_at": "2024-02-13T15:06:05+10:30",
+          "user_id": null,
+          "billing_address": {
+            "first_name": "Catherine",
+            "address1": "28 SEDGEMOOR RD",
+            "phone": null,
+            "city": "CRAIGMORE",
+            "zip": "5114",
+            "province": "South Australia",
+            "country": "Australia",
+            "last_name": "Brookes",
+            "address2": null,
+            "company": null,
+            "latitude": -34.6942604,
+            "longitude": 138.7104765,
+            "name": "Catherine Brookes",
+            "country_code": "AU",
+            "province_code": "SA"
+          },
+          "customer": {
+            "id": 8058986037540,
+            "email": "catherineann084@gmail.com",
+            "created_at": "2024-02-13T15:05:37+10:30",
+            "updated_at": "2024-02-13T15:06:02+10:30",
+            "first_name": "Catherine",
+            "last_name": "Brookes",
+            "state": "disabled",
+            "note": null,
+            "verified_email": true,
+            "multipass_identifier": null,
+            "tax_exempt": false,
+            "phone": null,
+            "email_marketing_consent": {
+              "state": "not_subscribed",
+              "opt_in_level": "single_opt_in",
+              "consent_updated_at": null
+            },
+            "sms_marketing_consent": null,
+            "tags": "",
+            "currency": "AUD",
+            "tax_exemptions": [],
+            "admin_graphql_api_id": "gid://shopify/Customer/8058986037540",
+            "default_address": {
+              "id": 10135301030180,
+              "customer_id": 8058986037540,
+              "first_name": "Catherine",
+              "last_name": "Brookes",
+              "company": "",
+              "address1": "28 SEDGEMOOR RD",
+              "address2": "",
+              "city": "CRAIGMORE",
+              "province": "South Australia",
+              "country": "Australia",
+              "zip": "5114",
+              "phone": null,
+              "name": "Catherine Brookes",
+              "province_code": "SA",
+              "country_code": "AU",
+              "country_name": "Australia",
+              "default": true
+            }
+          },
+          "discount_applications": [
+            {
+              "target_type": "line_item",
+              "type": "discount_code",
+              "value": "30.0",
+              "value_type": "percentage",
+              "allocation_method": "across",
+              "target_selection": "entitled",
+              "code": "LOVE30"
+            }
+          ],
           "fulfillments": [],
           "line_items": [
             {
-              "id": 14476769755428,
-              "admin_graphql_api_id": "gid://shopify/LineItem/14476769755428",
+              "id": 14617787859236,
+              "admin_graphql_api_id": "gid://shopify/LineItem/14617787859236",
               "attributed_staffs": [],
               "current_quantity": 1,
               "fulfillable_quantity": 1,
               "fulfillment_service": "manual",
               "fulfillment_status": null,
               "gift_card": false,
-              "grams": 0,
-              "name": "test",
-              "price": "0.00",
+              "grams": 2000,
+              "name": "Retro Blue Phone - Blue",
+              "price": "350.00",
               "price_set": {
                 "shop_money": {
-                  "amount": "0.00",
+                  "amount": "350.00",
                   "currency_code": "AUD"
                 },
                 "presentment_money": {
-                  "amount": "0.00",
+                  "amount": "350.00",
                   "currency_code": "AUD"
                 }
               },
-              "product_exists": false,
-              "product_id": null,
-              "properties": [],
+              "product_exists": true,
+              "product_id": 8438628581668,
+              "properties": [
+                {
+                  "name": "Delivery Date",
+                  "value": "December 7, 2024"
+                }
+              ],
               "quantity": 1,
               "requires_shipping": true,
-              "sku": null,
-              "taxable": true,
-              "title": "test",
+              "sku": "",
+              "taxable": false,
+              "title": "Retro Blue Phone",
               "total_discount": "0.00",
               "total_discount_set": {
                 "shop_money": {
@@ -486,19 +567,84 @@
                   "currency_code": "AUD"
                 }
               },
-              "variant_id": null,
-              "variant_inventory_management": null,
-              "variant_title": null,
-              "vendor": "",
+              "variant_id": 46464470614308,
+              "variant_inventory_management": "shopify",
+              "variant_title": "Blue",
+              "vendor": "My Store",
               "tax_lines": [],
               "duties": [],
-              "discount_allocations": []
+              "discount_allocations": [
+                {
+                  "amount": "105.00",
+                  "amount_set": {
+                    "shop_money": {
+                      "amount": "105.00",
+                      "currency_code": "AUD"
+                    },
+                    "presentment_money": {
+                      "amount": "105.00",
+                      "currency_code": "AUD"
+                    }
+                  },
+                  "discount_application_index": 0
+                }
+              ]
             }
           ],
           "payment_terms": null,
           "refunds": [],
-          "shipping_address": null,
-          "shipping_lines": []
+          "shipping_address": {
+            "first_name": "Catherine",
+            "address1": "28 SEDGEMOOR RD",
+            "phone": null,
+            "city": "CRAIGMORE",
+            "zip": "5114",
+            "province": "South Australia",
+            "country": "Australia",
+            "last_name": "Brookes",
+            "address2": null,
+            "company": null,
+            "latitude": null,
+            "longitude": null,
+            "name": "Catherine Brookes",
+            "country_code": "AU",
+            "province_code": "SA"
+          },
+          "shipping_lines": [
+            {
+              "id": 4606648680740,
+              "carrier_identifier": "650f1a14fa979ec5c74d063e968411d4",
+              "code": "Arrive before event",
+              "discounted_price": "0.00",
+              "discounted_price_set": {
+                "shop_money": {
+                  "amount": "0.00",
+                  "currency_code": "AUD"
+                },
+                "presentment_money": {
+                  "amount": "0.00",
+                  "currency_code": "AUD"
+                }
+              },
+              "phone": null,
+              "price": "0.00",
+              "price_set": {
+                "shop_money": {
+                  "amount": "0.00",
+                  "currency_code": "AUD"
+                },
+                "presentment_money": {
+                  "amount": "0.00",
+                  "currency_code": "AUD"
+                }
+              },
+              "requested_fulfillment_service_id": null,
+              "source": "shopify",
+              "title": "Arrive before event",
+              "tax_lines": [],
+              "discount_allocations": []
+            }
+          ]
         }
       }
     ]
@@ -508,7 +654,7 @@
   },
   "staticData": {
     "node:Shopify Trigger": {
-      "webhookId": 1457451368740
+      "webhookId": 1470404755748
     }
   },
   "tags": [
@@ -526,6 +672,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-25T22:38:47.000Z",
-  "versionId": "a3af8d34-fe26-454f-b1c4-6e71ec4aed95"
+  "updatedAt": "2024-02-13T04:56:48.000Z",
+  "versionId": "bc4fbc06-e5c0-41b6-9de6-20fbe0dba678"
 }
