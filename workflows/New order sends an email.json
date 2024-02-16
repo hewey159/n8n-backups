@@ -191,7 +191,7 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "// function formatDate(inputDate) {\n//   // Create a Date object from the input date string\n//   const dateObject = new Date(inputDate);\n//   if (isNaN(dateObject)){\n//     return null\n//   }\n  \n\n//   // Extract year, month, and day components\n//   const year = dateObject.getFullYear();\n//   const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n//   const day = String(dateObject.getDate()).padStart(2, '0');\n\n//   // Create the formatted date string in \"yyyy-mm-dd\" format\n//   const formattedDate = `${year}/${month}/${day}`;\n\n//   return formattedDate;\n// }\n\n// // Example usage:\n// const tags = $('Shopify Trigger').item.json.line_items[0];\n// const result = tags.map((tag) => formatDate(tag))\n// const filteredArray = result.filter(value => value !== null);\n\n// if(filteredArray.length != 1){\n//   $input.item.json.formattedDate = null\n// }\n// else {\n//   $input.item.json.formattedDate = filteredArray[0]\n// }\n\n$input.item.json.formattedDate = null\n\n// const formattedDateString = formatDate(inputDateString);\n// $input.item.json.formattedDate = result\n// return { filteredArray, tags }\nreturn $input.item;"
+        "jsCode": "function formatDate(inputDate) {\n  // Create a Date object from the input date string\n  const dateObject = new Date(inputDate);\n  if (isNaN(dateObject)){\n    return null\n  }\n  \n\n  // Extract year, month, and day components\n  const year = dateObject.getFullYear();\n  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n  const day = String(dateObject.getDate()).padStart(2, '0');\n\n  // Create the formatted date string in \"yyyy-mm-dd\" format\n  const formattedDate = `${year}/${month}/${day}`;\n\n  return formattedDate;\n}\n\n// Example usage:\nconst tags = $('Shopify Trigger').item.json.line_items[0];\nconst result = tags.map((tag) => formatDate(tag))\nconst filteredArray = result.filter(value => value !== null);\n\nif(filteredArray.length != 1){\n  $input.item.json.formattedDate = null\n}\nelse {\n  $input.item.json.formattedDate = filteredArray[0]\n}\n\n// $input.item.json.formattedDate = null\n\n// const formattedDateString = formatDate(inputDateString);\n// $input.item.json.formattedDate = result\n// return { filteredArray, tags }\nreturn $input.item;"
       },
       "id": "8c383125-d678-4893-ad06-fcf69f7dafd8",
       "name": "Code2",
@@ -654,7 +654,7 @@
   },
   "staticData": {
     "node:Shopify Trigger": {
-      "webhookId": 1470404755748
+      "webhookId": 1471718588708
     }
   },
   "tags": [
@@ -672,6 +672,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-02-13T04:56:48.000Z",
-  "versionId": "bc4fbc06-e5c0-41b6-9de6-20fbe0dba678"
+  "updatedAt": "2024-02-16T11:53:49.000Z",
+  "versionId": "245a088c-af3f-4893-8ec7-a29f66aea820"
 }
