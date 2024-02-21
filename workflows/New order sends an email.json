@@ -191,7 +191,7 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "function formatDate(inputDate) {\n  // Create a Date object from the input date string\n  const dateObject = new Date(inputDate);\n  if (isNaN(dateObject)){\n    return null\n  }\n  \n\n  // Extract year, month, and day components\n  const year = dateObject.getFullYear();\n  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n  const day = String(dateObject.getDate()).padStart(2, '0');\n\n  // Create the formatted date string in \"yyyy-mm-dd\" format\n  const formattedDate = `${year}/${month}/${day}`;\n\n  return formattedDate;\n}\n\n// Example usage:\nconst tags = $('Shopify Trigger').item.json.line_items[0];\nconst result = tags.map((tag) => formatDate(tag))\nconst filteredArray = result.filter(value => value !== null);\n\nif(filteredArray.length != 1){\n  $input.item.json.formattedDate = null\n}\nelse {\n  $input.item.json.formattedDate = filteredArray[0]\n}\n\n// $input.item.json.formattedDate = null\n\n// const formattedDateString = formatDate(inputDateString);\n// $input.item.json.formattedDate = result\n// return { filteredArray, tags }\nreturn $input.item;"
+        "jsCode": "function formatDate(inputDate) {\n  // Create a Date object from the input date string\n  const dateObject = new Date(inputDate);\n  if (isNaN(dateObject)){\n    return null\n  }\n  \n\n  // Extract year, month, and day components\n  const year = dateObject.getFullYear();\n  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n  const day = String(dateObject.getDate()).padStart(2, '0');\n\n  // Create the formatted date string in \"yyyy-mm-dd\" format\n  const formattedDate = `${year}/${month}/${day}`;\n\n  return formattedDate;\n}\n\n// // Example usage:\n// const tags = $('Shopify Trigger').item.json.line_items[0];\n// const result = tags.map((tag) => formatDate(tag))\n// const filteredArray = result.filter(value => value !== null);\n\n// if(filteredArray.length != 1){\n//   $input.item.json.formattedDate = null\n// }\n// else {\n//   $input.item.json.formattedDate = filteredArray[0]\n// }\n\n$input.item.json.formattedDate = formatDate('October 19, 2024')\n// $input.item.json.formattedDate = null\n\n// const formattedDateString = formatDate(inputDateString);\n// $input.item.json.formattedDate = result\n// return { filteredArray, tags }\nreturn $input.item;"
       },
       "id": "8c383125-d678-4893-ad06-fcf69f7dafd8",
       "name": "Code2",
@@ -265,29 +265,29 @@
     "Shopify Trigger": [
       {
         "json": {
-          "id": 5705403498788,
-          "admin_graphql_api_id": "gid://shopify/Order/5705403498788",
+          "id": 5724673507620,
+          "admin_graphql_api_id": "gid://shopify/Order/5724673507620",
           "app_id": 580111,
-          "browser_ip": "49.183.145.201",
+          "browser_ip": "167.30.222.60",
           "buyer_accepts_marketing": false,
           "cancel_reason": null,
           "cancelled_at": null,
-          "cart_token": "208ed42a5ce3391824b3f59da1d231e5",
-          "checkout_id": 37245758505252,
-          "checkout_token": "af030910d55c4c7388dc29636929204c",
+          "cart_token": "Z2NwLWFzaWEtc291dGhlYXN0MTowMUhRMkJaOVZRUjc3QkhSQjBRWjYzUk5EWg",
+          "checkout_id": 37261085081892,
+          "checkout_token": "6bc559291d301b3e0c73c89bb7a4b5c5",
           "client_details": {
-            "accept_language": "en",
+            "accept_language": "en-AU",
             "browser_height": null,
-            "browser_ip": "49.183.145.201",
+            "browser_ip": "167.30.222.60",
             "browser_width": null,
             "session_hash": null,
-            "user_agent": "Mozilla/5.0 (Linux; Android 14; SAMSUNG SM-G990E) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/23.0 Chrome/115.0.0.0 Mobile Safari/537.36"
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
           },
           "closed_at": null,
-          "confirmation_number": "HGJP0WGKF",
+          "confirmation_number": "JPDK5Y1QW",
           "confirmed": true,
-          "contact_email": "catherineann084@gmail.com",
-          "created_at": "2024-02-13T15:06:01+10:30",
+          "contact_email": "carly-fordham93@hotmail.com",
+          "created_at": "2024-02-21T14:47:23+10:30",
           "currency": "AUD",
           "current_subtotal_price": "245.00",
           "current_subtotal_price_set": {
@@ -335,7 +335,7 @@
               "currency_code": "AUD"
             }
           },
-          "customer_locale": "en",
+          "customer_locale": "en-AU",
           "device_id": null,
           "discount_codes": [
             {
@@ -344,20 +344,20 @@
               "type": "percentage"
             }
           ],
-          "email": "catherineann084@gmail.com",
+          "email": "carly-fordham93@hotmail.com",
           "estimated_taxes": false,
           "financial_status": "paid",
           "fulfillment_status": null,
-          "landing_site": "/",
+          "landing_site": "/pages/all-phones",
           "landing_site_ref": null,
           "location_id": null,
           "merchant_of_record_app_id": null,
-          "name": "#1021",
+          "name": "#1022",
           "note": null,
           "note_attributes": [],
-          "number": 21,
-          "order_number": 1021,
-          "order_status_url": "https://voicekeepsakes.com.au/78539129124/orders/3434434adc814f844fc5b646d583fa71/authenticate?key=38c779800e5c5ecc33c58209ca8d5995",
+          "number": 22,
+          "order_number": 1022,
+          "order_status_url": "https://voicekeepsakes.com.au/78539129124/orders/2e94ce254e27a0dbd2414f989c3551b9/authenticate?key=cb4760a1009fa3afa8dae40811da7db1",
           "original_total_additional_fees_set": null,
           "original_total_duties_set": null,
           "payment_gateway_names": [
@@ -366,10 +366,10 @@
           "phone": null,
           "po_number": null,
           "presentment_currency": "AUD",
-          "processed_at": "2024-02-13T15:05:57+10:30",
-          "reference": "d918ef0793be3628550c273711b62335",
-          "referring_site": "https://www.google.com/",
-          "source_identifier": "d918ef0793be3628550c273711b62335",
+          "processed_at": "2024-02-21T14:47:18+10:30",
+          "reference": "4359fe3acba5b7c1815b7d864ef272e6",
+          "referring_site": "",
+          "source_identifier": "4359fe3acba5b7c1815b7d864ef272e6",
           "source_name": "web",
           "source_url": null,
           "subtotal_price": "245.00",
@@ -388,7 +388,7 @@
           "tax_lines": [],
           "taxes_included": true,
           "test": false,
-          "token": "3434434adc814f844fc5b646d583fa71",
+          "token": "2e94ce254e27a0dbd2414f989c3551b9",
           "total_discounts": "105.00",
           "total_discounts_set": {
             "shop_money": {
@@ -446,32 +446,32 @@
           },
           "total_tip_received": "0.00",
           "total_weight": 2000,
-          "updated_at": "2024-02-13T15:06:05+10:30",
+          "updated_at": "2024-02-21T14:47:25+10:30",
           "user_id": null,
           "billing_address": {
-            "first_name": "Catherine",
-            "address1": "28 SEDGEMOOR RD",
+            "first_name": "Carly",
+            "address1": "15 Hudson Drive",
             "phone": null,
-            "city": "CRAIGMORE",
-            "zip": "5114",
-            "province": "South Australia",
+            "city": "Dudley Park",
+            "zip": "6210",
+            "province": "Western Australia",
             "country": "Australia",
-            "last_name": "Brookes",
+            "last_name": "Fordham",
             "address2": null,
             "company": null,
-            "latitude": -34.6942604,
-            "longitude": 138.7104765,
-            "name": "Catherine Brookes",
+            "latitude": null,
+            "longitude": null,
+            "name": "Carly Fordham",
             "country_code": "AU",
-            "province_code": "SA"
+            "province_code": "WA"
           },
           "customer": {
-            "id": 8058986037540,
-            "email": "catherineann084@gmail.com",
-            "created_at": "2024-02-13T15:05:37+10:30",
-            "updated_at": "2024-02-13T15:06:02+10:30",
-            "first_name": "Catherine",
-            "last_name": "Brookes",
+            "id": 8084880490788,
+            "email": "carly-fordham93@hotmail.com",
+            "created_at": "2024-02-21T14:47:18+10:30",
+            "updated_at": "2024-02-21T14:47:23+10:30",
+            "first_name": "Carly",
+            "last_name": "Fordham",
             "state": "disabled",
             "note": null,
             "verified_email": true,
@@ -487,22 +487,22 @@
             "tags": "",
             "currency": "AUD",
             "tax_exemptions": [],
-            "admin_graphql_api_id": "gid://shopify/Customer/8058986037540",
+            "admin_graphql_api_id": "gid://shopify/Customer/8084880490788",
             "default_address": {
-              "id": 10135301030180,
-              "customer_id": 8058986037540,
-              "first_name": "Catherine",
-              "last_name": "Brookes",
-              "company": "",
-              "address1": "28 SEDGEMOOR RD",
-              "address2": "",
-              "city": "CRAIGMORE",
-              "province": "South Australia",
+              "id": 10160009445668,
+              "customer_id": 8084880490788,
+              "first_name": "Carly",
+              "last_name": "Fordham",
+              "company": null,
+              "address1": "15 Hudson Drive",
+              "address2": null,
+              "city": "Dudley Park",
+              "province": "Western Australia",
               "country": "Australia",
-              "zip": "5114",
+              "zip": "6210",
               "phone": null,
-              "name": "Catherine Brookes",
-              "province_code": "SA",
+              "name": "Carly Fordham",
+              "province_code": "WA",
               "country_code": "AU",
               "country_name": "Australia",
               "default": true
@@ -522,8 +522,8 @@
           "fulfillments": [],
           "line_items": [
             {
-              "id": 14617787859236,
-              "admin_graphql_api_id": "gid://shopify/LineItem/14617787859236",
+              "id": 14660513464612,
+              "admin_graphql_api_id": "gid://shopify/LineItem/14660513464612",
               "attributed_staffs": [],
               "current_quantity": 1,
               "fulfillable_quantity": 1,
@@ -531,7 +531,7 @@
               "fulfillment_status": null,
               "gift_card": false,
               "grams": 2000,
-              "name": "Retro Blue Phone - Blue",
+              "name": "Vintage White Phone - White",
               "price": "350.00",
               "price_set": {
                 "shop_money": {
@@ -544,18 +544,18 @@
                 }
               },
               "product_exists": true,
-              "product_id": 8438628581668,
+              "product_id": 8475675328804,
               "properties": [
                 {
                   "name": "Delivery Date",
-                  "value": "December 7, 2024"
+                  "value": "October 19, 2024"
                 }
               ],
               "quantity": 1,
               "requires_shipping": true,
               "sku": "",
-              "taxable": false,
-              "title": "Retro Blue Phone",
+              "taxable": true,
+              "title": "Vintage White Phone",
               "total_discount": "0.00",
               "total_discount_set": {
                 "shop_money": {
@@ -567,10 +567,10 @@
                   "currency_code": "AUD"
                 }
               },
-              "variant_id": 46464470614308,
+              "variant_id": 46464287768868,
               "variant_inventory_management": "shopify",
-              "variant_title": "Blue",
-              "vendor": "My Store",
+              "variant_title": "White",
+              "vendor": "Voice Keep Sakes",
               "tax_lines": [],
               "duties": [],
               "discount_allocations": [
@@ -594,25 +594,25 @@
           "payment_terms": null,
           "refunds": [],
           "shipping_address": {
-            "first_name": "Catherine",
-            "address1": "28 SEDGEMOOR RD",
+            "first_name": "Carly",
+            "address1": "15 Hudson Drive",
             "phone": null,
-            "city": "CRAIGMORE",
-            "zip": "5114",
-            "province": "South Australia",
+            "city": "Dudley Park",
+            "zip": "6210",
+            "province": "Western Australia",
             "country": "Australia",
-            "last_name": "Brookes",
+            "last_name": "Fordham",
             "address2": null,
             "company": null,
-            "latitude": null,
-            "longitude": null,
-            "name": "Catherine Brookes",
+            "latitude": -32.5535187,
+            "longitude": 115.7367397,
+            "name": "Carly Fordham",
             "country_code": "AU",
-            "province_code": "SA"
+            "province_code": "WA"
           },
           "shipping_lines": [
             {
-              "id": 4606648680740,
+              "id": 4617124839716,
               "carrier_identifier": "650f1a14fa979ec5c74d063e968411d4",
               "code": "Arrive before event",
               "discounted_price": "0.00",
@@ -654,7 +654,7 @@
   },
   "staticData": {
     "node:Shopify Trigger": {
-      "webhookId": 1471718588708
+      "webhookId": 1473614381348
     }
   },
   "tags": [
@@ -672,6 +672,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-02-16T11:53:49.000Z",
-  "versionId": "245a088c-af3f-4893-8ec7-a29f66aea820"
+  "updatedAt": "2024-02-21T04:57:53.000Z",
+  "versionId": "779e1696-ad85-4736-9e1c-cfe142d9771c"
 }
