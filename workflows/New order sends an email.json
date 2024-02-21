@@ -191,7 +191,7 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "function formatDate(inputDate) {\n  // Create a Date object from the input date string\n  const dateObject = new Date(inputDate);\n  if (isNaN(dateObject)){\n    return null\n  }\n  \n\n  // Extract year, month, and day components\n  const year = dateObject.getFullYear();\n  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n  const day = String(dateObject.getDate()).padStart(2, '0');\n\n  // Create the formatted date string in \"yyyy-mm-dd\" format\n  const formattedDate = `${year}/${month}/${day}`;\n\n  return formattedDate;\n}\n\n// // Example usage:\n// const tags = $('Shopify Trigger').item.json.line_items[0];\n// const result = tags.map((tag) => formatDate(tag))\n// const filteredArray = result.filter(value => value !== null);\n\n// if(filteredArray.length != 1){\n//   $input.item.json.formattedDate = null\n// }\n// else {\n//   $input.item.json.formattedDate = filteredArray[0]\n// }\n\n$input.item.json.formattedDate = formatDate('October 19, 2024')\n// $input.item.json.formattedDate = null\n\n// const formattedDateString = formatDate(inputDateString);\n// $input.item.json.formattedDate = result\n// return { filteredArray, tags }\nreturn $input.item;"
+        "jsCode": "function formatDate(inputDate) {\n  // Create a Date object from the input date string\n  const dateObject = new Date(inputDate);\n  if (isNaN(dateObject)){\n    return null\n  }\n  \n\n  // Extract year, month, and day components\n  const year = dateObject.getFullYear();\n  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n  const day = String(dateObject.getDate()).padStart(2, '0');\n\n  // Create the formatted date string in \"yyyy-mm-dd\" format\n  const formattedDate = `${year}/${month}/${day}`;\n\n  return formattedDate;\n}\n\n\n// // Example usage:\nconst line_item_props = $input.item.json.line_items.map(line_item => line_item.properties).flat(1)\n\nconst all_dates = line_item_props.filter(item => item.name === \"Delivery Date\");\n\n// const filteredArray = result.filter(value => value !== null);\n\nif(all_dates.length != 1){\n  $input.item.json.formattedDate = null\n}\nelse {\n  //if we can;t format it return null so that it emails me\n  if(formatDate(all_dates[0].value) === null){\n    $input.item.json.formattedDate = null\n  } else{\n    $input.item.json.formattedDate = formatDate(all_dates[0].value)    \n  }\n}\n\nreturn $input.item;"
       },
       "id": "8c383125-d678-4893-ad06-fcf69f7dafd8",
       "name": "Code2",
@@ -286,7 +286,7 @@
           "closed_at": null,
           "confirmation_number": "JPDK5Y1QW",
           "confirmed": true,
-          "contact_email": "carly-fordham93@hotmail.com",
+          "contact_email": "heweywade@hotmail.com",
           "created_at": "2024-02-21T14:47:23+10:30",
           "currency": "AUD",
           "current_subtotal_price": "245.00",
@@ -654,7 +654,7 @@
   },
   "staticData": {
     "node:Shopify Trigger": {
-      "webhookId": 1473614381348
+      "webhookId": 1473624670500
     }
   },
   "tags": [
@@ -672,6 +672,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-02-21T04:57:53.000Z",
-  "versionId": "779e1696-ad85-4736-9e1c-cfe142d9771c"
+  "updatedAt": "2024-02-21T05:25:11.000Z",
+  "versionId": "b04beaff-aa8d-4a47-975b-ed2b73b8c9a3"
 }
