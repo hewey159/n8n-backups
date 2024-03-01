@@ -1,33 +1,11 @@
 {
   "active": true,
   "connections": {
-    "Google Cloud Firestore": {
-      "main": [
-        [
-          {
-            "node": "Filter3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Shopify": {
       "main": [
         [
           {
             "node": "Code1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter3": {
-      "main": [
-        [
-          {
-            "node": "Code",
             "type": "main",
             "index": 0
           }
@@ -49,17 +27,17 @@
       "main": [
         [
           {
-            "node": "15 days",
+            "node": "45Days",
             "type": "main",
             "index": 0
           },
           {
-            "node": "45 days",
+            "node": "30Days",
             "type": "main",
             "index": 0
           },
           {
-            "node": "30 days",
+            "node": "15Days",
             "type": "main",
             "index": 0
           }
@@ -71,17 +49,6 @@
         [
           {
             "node": "Shopify",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code": {
-      "main": [
-        [
-          {
-            "node": "Code2",
             "type": "main",
             "index": 0
           }
@@ -111,138 +78,6 @@
         [
           {
             "node": "Merge",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code2": {
-      "main": [
-        [
-          {
-            "node": "Microsoft Outlook",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Cloud Firestore1": {
-      "main": [
-        [
-          {
-            "node": "Filter4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter4": {
-      "main": [
-        [
-          {
-            "node": "Code4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code4": {
-      "main": [
-        [
-          {
-            "node": "Code5",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code5": {
-      "main": [
-        [
-          {
-            "node": "Microsoft Outlook2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Cloud Firestore2": {
-      "main": [
-        [
-          {
-            "node": "Filter5",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter5": {
-      "main": [
-        [
-          {
-            "node": "Code6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code6": {
-      "main": [
-        [
-          {
-            "node": "Code7",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code7": {
-      "main": [
-        [
-          {
-            "node": "Microsoft Outlook3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "30 days": {
-      "main": [
-        [
-          {
-            "node": "Google Cloud Firestore",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "15 days": {
-      "main": [
-        [
-          {
-            "node": "Google Cloud Firestore1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "45 days": {
-      "main": [
-        [
-          {
-            "node": "Google Cloud Firestore2",
             "type": "main",
             "index": 0
           }
@@ -303,6 +138,186 @@
           }
         ]
       ]
+    },
+    "Google Cloud Firestore2": {
+      "main": [
+        [
+          {
+            "node": "get only ones that didn't return",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "get only ones that didn't return": {
+      "main": [
+        [
+          {
+            "node": "get human readable date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "45Days": {
+      "main": [
+        [
+          {
+            "node": "get only ones that didn't return",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Cloud Firestore2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get human readable date": {
+      "main": [
+        [
+          {
+            "node": "get encoded order number",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get encoded order number": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Cloud Firestore": {
+      "main": [
+        [
+          {
+            "node": "get only ones that didn't return1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "30Days": {
+      "main": [
+        [
+          {
+            "node": "Google Cloud Firestore",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "get only ones that didn't return1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get only ones that didn't return1": {
+      "main": [
+        [
+          {
+            "node": "get human readable date1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get human readable date1": {
+      "main": [
+        [
+          {
+            "node": "get encoded order number1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get encoded order number1": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Cloud Firestore1": {
+      "main": [
+        [
+          {
+            "node": "get only ones that didn't return2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "get only ones that didn't return2": {
+      "main": [
+        [
+          {
+            "node": "get human readable date2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get human readable date2": {
+      "main": [
+        [
+          {
+            "node": "get encoded order number2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "15Days": {
+      "main": [
+        [
+          {
+            "node": "Google Cloud Firestore1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "get only ones that didn't return2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get encoded order number2": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-01-18T00:22:35.628Z",
@@ -342,28 +357,6 @@
     },
     {
       "parameters": {
-        "projectId": "voice-recorder-53502",
-        "collection": "recordings",
-        "documentId": "={{ $('Shopify').item.json.order_number }}"
-      },
-      "id": "19644679-7af0-4b80-93c8-e76f4cced047",
-      "name": "Google Cloud Firestore",
-      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
-      "typeVersion": 1,
-      "position": [
-        3700,
-        540
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "googleFirebaseCloudFirestoreOAuth2Api": {
-          "id": "eTvDQN3NeFkY1j3t",
-          "name": "Google Firebase Cloud Firestore account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "toRecipients": "heweywade@hotmail.com",
         "subject": "=🎙️ Your Personalized Audio Greeting - Record Your Message Today!",
         "bodyContent": "=<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Wedding Audio Greeting</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f0f0f0;\n            padding-bottom: 1rem;\n        }\n\n        .container {\n            max-width: 600px;\n            margin: 20px auto;\n            padding: 20px;\n            background-color: #ffffff;\n            border-radius: 8px;\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n        }\n\n        .banner {\n            background-color: #123740;\n            text-align: center;\n            padding: 10px 0;\n            border-radius: 8px 8px 0 0; \n        }\n\n        .banner h2 {\n            color: #ffffff;\n            margin: 0;\n        }\n\n        h3 {\n            color: #123740;\n        }\n\n        p {\n            color: #333333;\n            line-height: 1.6;\n        }\n\n        a {\n            color: #006400;\n            text-decoration: none;\n        }\n\n        a:hover {\n            text-decoration: underline;\n        }\n\n        .button {\n            display: inline-block;\n            padding: 10px 20px;\n            background-color: #123740;\n            color: #ffffff;\n            text-decoration: none;\n            margin-bottom: 15px;\n            border-radius: 5px;\n            transition: background-color 0.2s ease; /* Add smooth color transition on hover */\n        }\n        .button:hover {\n            background-color: #0c2227; /* Darker green on hover */\n        }\n\n        .message-examples {\n            margin-top: 20px;\n            color: #555555;\n        }\n\n\n        .signature {\n            margin-top: 40px;\n            text-align: right;\n        }\n        \n        .test {\n            display: flex;\n            align-items: center;\n            gap: 8px;\n            justify-content: flex-end; /* Align content to the right */\n        }\n\n        .signature p {\n            font-size: 14px;\n            color: #333333;\n            line-height: 0;\n        }\n\n        .signature span {\n            display: inline-block;\n            margin-right: 10px;\n        }\n\n        .signature img {\n            height: 20px;\n            width: auto;\n            padding-bottom: 4px;\n            padding-right: 4px;\n        }\n        \n        .record-button-div {\n            display: flex;\n            justify-content: center;\n        }\n\n    </style>\n</head>\n<body>\n    <div class=\"banner\">\n        <h2>Voice Keepsakes</h2>\n<img src=\"https://i.ibb.co/87kzVTK/test.png\">\n\n    </div>\n    <div class=\"container\">\n        <h3>Hey {{ $('Shopify').item.json.customer.first_name }} 👋,</h3>\n        <p>Not long now until your speical day!  As part of the audio guest book experience, you get the opportunity to record a custom greeting that\n            will play when guests pick up the phone.</p>\n        <div class=\"record-button-div\"><a href=\"https://voice-recorder-53502.web.app/?orderId={{ $json.encoded }}\" target=\"_blank\" class=\"button\">Record Your Message</a></div>\n        <p>If you could do this by <b>{{ $('Code').item.json.uploadDeadline }}</b>, then we can load this on your phone and get it to you in\n            time for your event on the {{ $('Code').item.json.delDate }} 🙂 </p>\n\n        <div class=\"message-examples\">\n            <p>Here are some examples if you need some help with what kind of things to say,</p>\n            <ul>\n                <li>\"Hello, dear friends and family! Thank you for being a part of our special day. We are so grateful\n                    to have you here celebrating with us. Please leave a message with your thoughts, wishes, or advice\n                    for us after the beep. We can't wait to hear your voices and cherish these memories forever.\"</li>\n                <li>\"Hey there, amazing people! We're overjoyed that you're here to celebrate this magical day with us.\n                    Leave us a message after the beep, and don't hold back! Share your well wishes, funny stories, or\n                    any advice you have for us. We promise to cherish every word and maybe even have a laugh or two\n                    along the way!\"</li>\n                <li>\"Hello, everyone! Your presence means the world to us. We're so happy to have you here as we start\n                    this incredible journey together. Share your love, your hopes, or any wisdom you'd like to pass on\n                    after the beep. Your words will be a treasure for us, and we can't thank you enough for being a part\n                    of our special day.\"</li>\n                <li>\"Hey, friends and family! It's us, [Couple's Names]. We're beyond excited to have you here, and we'd\n                    love to hear your thoughts, stories, or any crazy advice you have for us. Don't be shy; be as\n                    creative and unique as you'd like! After the beep, leave your message, and we can't wait to listen\n                    and laugh together later. Thanks for being awesome!\"</li>\n            </ul>\n        </div>\n\n        <p>Just reply to this email if you need any help or have any questions 😄</p>\n        <div class=\"signature\">\n            <p>\n                <span>Kind regards,</span>\n            </p>\n            <div class=\"test\">\n                <img src=\"https://i.ibb.co/pvd4WSb/test-1.png\">\n                <p><span>Voice Keepsakes</span></p>\n            </div>\n        </div>\n    </div>\n</body>\n\n</html> ",
@@ -377,8 +370,8 @@
       "type": "n8n-nodes-base.microsoftOutlook",
       "typeVersion": 2,
       "position": [
-        4620,
-        540
+        4640,
+        560
       ],
       "credentials": {
         "microsoftOutlookOAuth2Api": {
@@ -408,39 +401,6 @@
           "name": "Shopify Access Token account 2"
         }
       }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "6275442a-9fdb-4b18-ad25-150beaf59a74",
-              "leftValue": "={{ $json }}",
-              "rightValue": "",
-              "operator": {
-                "type": "object",
-                "operation": "empty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "c5834f3e-8b1a-4181-879a-ef7f8904e0e0",
-      "name": "Filter3",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2,
-      "position": [
-        3920,
-        540
-      ]
     },
     {
       "parameters": {
@@ -524,21 +484,6 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "language": "python",
-        "pythonCode": "function formatDate(inputDate) {\n    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];\n    \n    const dateParts = inputDate.split('/');\n    const year = dateParts[0];\n    const month = months[parseInt(dateParts[1], 10) - 1];\n    const day = parseInt(dateParts[2], 10);\n\n    const ordinalSuffix = (day) => {\n        if (day >= 11 && day <= 13) {\n            return 'th';\n        }\n        switch (day % 10) {\n            case 1:\n                return 'st';\n            case 2:\n                return 'nd';\n            case 3:\n                return 'rd';\n            default:\n                return 'th';\n        }\n    };\n\n    const formattedDate = `the ${day}${ordinalSuffix(day)} of ${month}`;\n    return formattedDate;\n}\n\nconst deadline = new Date($('Filter').item.json.formattedDate);\ndeadline.setDate(deadline.getDate() - 12);\n$input.item.json.uploadDeadline = formatDate(deadline.toISOString().split('T')[0].replaceAll('-', '/'));\n$input.item.json.test = $('Filter').item.json.formattedDate\n$input.item.json.delDate = formatDate($('Filter').item.json.formattedDate);\n\nreturn $input.item;"
-      },
-      "id": "86f2ca0d-38c8-4798-a580-0f1f0dc051d5",
-      "name": "Code",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        4160,
-        540
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
         "jsCode": "function formatDate(inputDate) {\n  // Create a Date object from the input date string\n  const dateObject = new Date(inputDate);\n  if (isNaN(dateObject)){\n    return null\n  }\n  \n\n  // Extract year, month, and day components\n  const year = dateObject.getFullYear();\n  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n  const day = String(dateObject.getDate()).padStart(2, '0');\n\n  // Create the formatted date string in \"yyyy-mm-dd\" format\n  const formattedDate = `${year}/${month}/${day}`;\n\n  return formattedDate;\n}\n\n// Example usage:\nconst tags = $('Shopify').item.json.tags.split(','); //tags are split by ',' in shopify\nconst result = tags.map((tag) => formatDate(tag))\nconst filteredArray = result.filter(value => value !== null);\n\nif(filteredArray.length != 1){\n  $input.item.json.formattedDate = null\n}\nelse {\n  $input.item.json.formattedDate = filteredArray[0]\n}\n\n\n// const formattedDateString = formatDate(inputDateString);\n// $input.item.json.formattedDate = result\n// return { filteredArray, tags }\nreturn $input.item;"
       },
       "id": "ab150ac4-2b78-4e11-ac4f-889925d9f5a3",
@@ -588,42 +533,6 @@
     },
     {
       "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\nfunction base64Encode(str) {\n  const buffer = Buffer.from(str, 'utf-8');\n  return buffer.toString('base64');\n}\n$input.item.json.encoded = base64Encode($('Shopify').item.json.order_number.toString())\nreturn $input.item;"
-      },
-      "id": "991362cf-5c7e-48e5-8838-6ec37829d581",
-      "name": "Code2",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        4380,
-        540
-      ]
-    },
-    {
-      "parameters": {
-        "projectId": "voice-recorder-53502",
-        "collection": "recordings",
-        "documentId": "={{ $('Shopify').item.json.order_number }}"
-      },
-      "id": "cf7b76be-2dcf-4f4e-b6df-db8791309010",
-      "name": "Google Cloud Firestore1",
-      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
-      "typeVersion": 1,
-      "position": [
-        3700,
-        740
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "googleFirebaseCloudFirestoreOAuth2Api": {
-          "id": "eTvDQN3NeFkY1j3t",
-          "name": "Google Firebase Cloud Firestore account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "toRecipients": "heweywade@hotmail.com",
         "subject": "=🎙️ Final Days to Record Your Message!",
         "bodyContent": "=<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Wedding Audio Greeting</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f0f0f0;\n            padding-bottom: 1rem;\n        }\n\n        .container {\n            max-width: 600px;\n            margin: 20px auto;\n            padding: 20px;\n            background-color: #ffffff;\n            border-radius: 8px;\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n        }\n\n        .banner {\n            background-color: #123740;\n            text-align: center;\n            padding: 10px 0;\n            border-radius: 8px 8px 0 0; \n        }\n\n        .banner h2 {\n            color: #ffffff;\n            margin: 0;\n        }\n\n        h3 {\n            color: #123740;\n        }\n\n        p {\n            color: #333333;\n            line-height: 1.6;\n        }\n\n        a {\n            color: #006400;\n            text-decoration: none;\n        }\n\n        a:hover {\n            text-decoration: underline;\n        }\n\n        .button {\n            display: inline-block;\n            padding: 10px 20px;\n            background-color: #123740;\n            color: #ffffff;\n            text-decoration: none;\n            margin-bottom: 15px;\n            border-radius: 5px;\n            transition: background-color 0.2s ease; /* Add smooth color transition on hover */\n        }\n        .button:hover {\n            background-color: #0c2227; /* Darker green on hover */\n        }\n\n        .message-examples {\n            margin-top: 20px;\n            color: #555555;\n        }\n\n\n        .signature {\n            margin-top: 40px;\n            text-align: right;\n        }\n        \n        .test {\n            display: flex;\n            align-items: center;\n            gap: 8px;\n            justify-content: flex-end; /* Align content to the right */\n        }\n\n        .signature p {\n            font-size: 14px;\n            color: #333333;\n            line-height: 0;\n        }\n\n        .signature span {\n            display: inline-block;\n            margin-right: 10px;\n        }\n\n        .signature img {\n            height: 20px;\n            width: auto;\n            padding-bottom: 4px;\n            padding-right: 4px;\n        }\n        \n        .record-button-div {\n            display: flex;\n            justify-content: center;\n        }\n\n    </style>\n</head>\n<body>\n    <div class=\"banner\">\n        <h2>Voice Keepsakes</h2>\n<img src=\"https://i.ibb.co/87kzVTK/test.png\">\n\n    </div>\n    <div class=\"container\">\n        <h3>Hey {{ $('Shopify').item.json.customer.first_name }} 👋,</h3>\n        <p>Not long now until your speical day!  As part of the audio guest book experience, you get the opportunity to record a custom greeting that\n            will play when guests pick up the phone.</p>\n        <div class=\"record-button-div\"><a href=\"https://voice-recorder-53502.web.app/?orderId={{ $json.encoded }}\" target=\"_blank\" class=\"button\">Record Your Message</a></div>\n        <p>If you could do this by <b>{{ $('Code4').item.json.uploadDeadline }}</b>, then we can load this on your phone and get it to you in\n            time for your event on the {{ $('Code4').item.json.delDate }} 🙂 </p>\n\n        <div class=\"message-examples\">\n            <p>Here are some examples if you need some help with what kind of things to say,</p>\n            <ul>\n                <li>\"Hello, dear friends and family! Thank you for being a part of our special day. We are so grateful\n                    to have you here celebrating with us. Please leave a message with your thoughts, wishes, or advice\n                    for us after the beep. We can't wait to hear your voices and cherish these memories forever.\"</li>\n                <li>\"Hey there, amazing people! We're overjoyed that you're here to celebrate this magical day with us.\n                    Leave us a message after the beep, and don't hold back! Share your well wishes, funny stories, or\n                    any advice you have for us. We promise to cherish every word and maybe even have a laugh or two\n                    along the way!\"</li>\n                <li>\"Hello, everyone! Your presence means the world to us. We're so happy to have you here as we start\n                    this incredible journey together. Share your love, your hopes, or any wisdom you'd like to pass on\n                    after the beep. Your words will be a treasure for us, and we can't thank you enough for being a part\n                    of our special day.\"</li>\n                <li>\"Hey, friends and family! It's us, [Couple's Names]. We're beyond excited to have you here, and we'd\n                    love to hear your thoughts, stories, or any crazy advice you have for us. Don't be shy; be as\n                    creative and unique as you'd like! After the beep, leave your message, and we can't wait to listen\n                    and laugh together later. Thanks for being awesome!\"</li>\n            </ul>\n        </div>\n\n        <p>Just reply to this email if you need any help or have any questions 😄</p>\n        <div class=\"signature\">\n            <p>\n                <span>Kind regards,</span>\n            </p>\n            <div class=\"test\">\n                <img src=\"https://i.ibb.co/pvd4WSb/test-1.png\">\n                <p><span>Voice Keepsakes</span></p>\n            </div>\n        </div>\n    </div>\n</body>\n\n</html> ",
@@ -637,8 +546,8 @@
       "type": "n8n-nodes-base.microsoftOutlook",
       "typeVersion": 2,
       "position": [
-        4600,
-        740
+        4640,
+        900
       ],
       "credentials": {
         "microsoftOutlookOAuth2Api": {
@@ -646,271 +555,6 @@
           "name": "Microsoft Outlook account"
         }
       }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "6275442a-9fdb-4b18-ad25-150beaf59a74",
-              "leftValue": "={{ $json }}",
-              "rightValue": "",
-              "operator": {
-                "type": "object",
-                "operation": "empty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "bd1a0f5d-2cd0-43af-ae89-61d02a6f1f71",
-      "name": "Filter4",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2,
-      "position": [
-        3940,
-        740
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "function formatDate(inputDate) {\n    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];\n    \n    const dateParts = inputDate.split('/');\n    const year = dateParts[0];\n    const month = months[parseInt(dateParts[1], 10) - 1];\n    const day = parseInt(dateParts[2], 10);\n\n    const ordinalSuffix = (day) => {\n        if (day >= 11 && day <= 13) {\n            return 'th';\n        }\n        switch (day % 10) {\n            case 1:\n                return 'st';\n            case 2:\n                return 'nd';\n            case 3:\n                return 'rd';\n            default:\n                return 'th';\n        }\n    };\n\n    const formattedDate = `the ${day}${ordinalSuffix(day)} of ${month}`;\n    return formattedDate;\n}\n\nconst deadline = new Date($('Filter').item.json.formattedDate);\ndeadline.setDate(deadline.getDate() - 12);\n$input.item.json.uploadDeadline = formatDate(deadline.toISOString().split('T')[0].replaceAll('-', '/'));\n$input.item.json.test = $('Filter').item.json.formattedDate\n$input.item.json.delDate = formatDate($('Filter').item.json.formattedDate);\n\nreturn $input.item;"
-      },
-      "id": "9f5f6aff-b287-4e4f-afae-3cd9a71c5391",
-      "name": "Code4",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        4140,
-        740
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\nfunction base64Encode(str) {\n  const buffer = Buffer.from(str, 'utf-8');\n  return buffer.toString('base64');\n}\n$input.item.json.encoded = base64Encode($('Shopify').item.json.order_number.toString())\nreturn $input.item;"
-      },
-      "id": "6381bd7a-4cd9-4ecf-b306-0d434418811e",
-      "name": "Code5",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        4360,
-        740
-      ]
-    },
-    {
-      "parameters": {
-        "projectId": "voice-recorder-53502",
-        "collection": "recordings",
-        "documentId": "={{ $('Shopify').item.json.order_number }}"
-      },
-      "id": "4ac4dc61-e08b-474f-ad49-17943766f923",
-      "name": "Google Cloud Firestore2",
-      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
-      "typeVersion": 1,
-      "position": [
-        3700,
-        320
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "googleFirebaseCloudFirestoreOAuth2Api": {
-          "id": "eTvDQN3NeFkY1j3t",
-          "name": "Google Firebase Cloud Firestore account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "toRecipients": "heweywade@hotmail.com",
-        "subject": "=🎙️ Your Personalized Audio Greeting",
-        "bodyContent": "=<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Wedding Audio Greeting</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f0f0f0;\n            padding-bottom: 1rem;\n        }\n\n        .container {\n            max-width: 600px;\n            margin: 20px auto;\n            padding: 20px;\n            background-color: #ffffff;\n            border-radius: 8px;\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n        }\n\n        .banner {\n            background-color: #123740;\n            text-align: center;\n            padding: 10px 0;\n            border-radius: 8px 8px 0 0; \n        }\n\n        .banner h2 {\n            color: #ffffff;\n            margin: 0;\n        }\n\n        h3 {\n            color: #123740;\n        }\n\n        p {\n            color: #333333;\n            line-height: 1.6;\n        }\n\n        a {\n            color: #006400;\n            text-decoration: none;\n        }\n\n        a:hover {\n            text-decoration: underline;\n        }\n\n        .button {\n            display: inline-block;\n            padding: 10px 20px;\n            background-color: #123740;\n            color: #ffffff;\n            text-decoration: none;\n            margin-bottom: 15px;\n            border-radius: 5px;\n            transition: background-color 0.2s ease; /* Add smooth color transition on hover */\n        }\n        .button:hover {\n            background-color: #0c2227; /* Darker green on hover */\n        }\n\n        .message-examples {\n            margin-top: 20px;\n            color: #555555;\n        }\n\n\n        .signature {\n            margin-top: 40px;\n            text-align: right;\n        }\n        \n        .test {\n            display: flex;\n            align-items: center;\n            gap: 8px;\n            justify-content: flex-end; /* Align content to the right */\n        }\n\n        .signature p {\n            font-size: 14px;\n            color: #333333;\n            line-height: 0;\n        }\n\n        .signature span {\n            display: inline-block;\n            margin-right: 10px;\n        }\n\n        .signature img {\n            height: 20px;\n            width: auto;\n            padding-bottom: 4px;\n            padding-right: 4px;\n        }\n        \n        .record-button-div {\n            display: flex;\n            justify-content: center;\n        }\n\n    </style>\n</head>\n<body>\n    <div class=\"banner\">\n        <h2>Voice Keepsakes</h2>\n<img src=\"https://i.ibb.co/87kzVTK/test.png\">\n\n    </div>\n    <div class=\"container\">\n        <h3>Hey {{ $('Shopify').item.json.customer.first_name }} 👋,</h3>\n        <p>As part of the audio guest book experience, you get the opportunity to record a custom greeting that\n            will play when guests pick up the phone.</p>\n        <div class=\"record-button-div\"><a href=\"https://voice-recorder-53502.web.app/?orderId={{ $json.encoded }}\" target=\"_blank\" class=\"button\">Record Your Message</a></div>\n        <p>If you could do this by <b>{{ $('Code6').item.json.uploadDeadline }}</b>, then we can load this on your phone and get it to you in\n            time for your event on the {{ $('Code6').item.json.delDate }} 🙂 </p>\n\n        <div class=\"message-examples\">\n            <p>Here are some examples if you need some help with what kind of things to say,</p>\n            <ul>\n                <li>\"Hello, dear friends and family! Thank you for being a part of our special day. We are so grateful\n                    to have you here celebrating with us. Please leave a message with your thoughts, wishes, or advice\n                    for us after the beep. We can't wait to hear your voices and cherish these memories forever.\"</li>\n                <li>\"Hey there, amazing people! We're overjoyed that you're here to celebrate this magical day with us.\n                    Leave us a message after the beep, and don't hold back! Share your well wishes, funny stories, or\n                    any advice you have for us. We promise to cherish every word and maybe even have a laugh or two\n                    along the way!\"</li>\n                <li>\"Hello, everyone! Your presence means the world to us. We're so happy to have you here as we start\n                    this incredible journey together. Share your love, your hopes, or any wisdom you'd like to pass on\n                    after the beep. Your words will be a treasure for us, and we can't thank you enough for being a part\n                    of our special day.\"</li>\n                <li>\"Hey, friends and family! It's us, [Couple's Names]. We're beyond excited to have you here, and we'd\n                    love to hear your thoughts, stories, or any crazy advice you have for us. Don't be shy; be as\n                    creative and unique as you'd like! After the beep, leave your message, and we can't wait to listen\n                    and laugh together later. Thanks for being awesome!\"</li>\n            </ul>\n        </div>\n\n        <p>Just reply to this email if you need any help or have any questions 😄</p>\n        <div class=\"signature\">\n            <p>\n                <span>Kind regards,</span>\n            </p>\n            <div class=\"test\">\n                <img src=\"https://i.ibb.co/pvd4WSb/test-1.png\">\n                <p><span>Voice Keepsakes</span></p>\n            </div>\n        </div>\n    </div>\n</body>\n\n</html> ",
-        "additionalFields": {
-          "bccRecipients": "wade@voicekeepsakes.com.au",
-          "bodyContentType": "html"
-        }
-      },
-      "id": "43fb4320-5b08-4682-8e1f-2e4169f0104b",
-      "name": "Microsoft Outlook3",
-      "type": "n8n-nodes-base.microsoftOutlook",
-      "typeVersion": 2,
-      "position": [
-        4600,
-        320
-      ],
-      "credentials": {
-        "microsoftOutlookOAuth2Api": {
-          "id": "kk1sPj8USL1RL0GY",
-          "name": "Microsoft Outlook account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "6275442a-9fdb-4b18-ad25-150beaf59a74",
-              "leftValue": "={{ $json }}",
-              "rightValue": "",
-              "operator": {
-                "type": "object",
-                "operation": "empty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "249e8e23-7374-4b88-8c23-ab4dd575a3c1",
-      "name": "Filter5",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2,
-      "position": [
-        3920,
-        320
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "function formatDate(inputDate) {\n    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];\n    \n    const dateParts = inputDate.split('/');\n    const year = dateParts[0];\n    const month = months[parseInt(dateParts[1], 10) - 1];\n    const day = parseInt(dateParts[2], 10);\n\n    const ordinalSuffix = (day) => {\n        if (day >= 11 && day <= 13) {\n            return 'th';\n        }\n        switch (day % 10) {\n            case 1:\n                return 'st';\n            case 2:\n                return 'nd';\n            case 3:\n                return 'rd';\n            default:\n                return 'th';\n        }\n    };\n\n    const formattedDate = `the ${day}${ordinalSuffix(day)} of ${month}`;\n    return formattedDate;\n}\n\nconst deadline = new Date($('Filter').item.json.formattedDate);\ndeadline.setDate(deadline.getDate() - 12);\n$input.item.json.uploadDeadline = formatDate(deadline.toISOString().split('T')[0].replaceAll('-', '/'));\n$input.item.json.test = $('Filter').item.json.formattedDate\n$input.item.json.delDate = formatDate($('Filter').item.json.formattedDate);\n\nreturn $input.item;"
-      },
-      "id": "eb92b6e3-eb0f-4cb7-b60c-1af094806209",
-      "name": "Code6",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        4140,
-        320
-      ]
-    },
-    {
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\nfunction base64Encode(str) {\n  const buffer = Buffer.from(str, 'utf-8');\n  return buffer.toString('base64');\n}\n$input.item.json.encoded = base64Encode($('Shopify').item.json.order_number.toString())\nreturn $input.item;"
-      },
-      "id": "104929fb-e41d-4a82-a613-0c2df11b37d3",
-      "name": "Code7",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        4360,
-        320
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "25c8ea65-b482-4658-a483-290d0397e9dc",
-              "leftValue": "={{ Math.floor($json.timeDifference.days) }}",
-              "rightValue": 30,
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "6d2f7724-2983-4c0a-9311-da6cc0ade145",
-      "name": "30 days",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2,
-      "position": [
-        3380,
-        580
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "25c8ea65-b482-4658-a483-290d0397e9dc",
-              "leftValue": "={{ Math.floor($json.timeDifference.days) }}",
-              "rightValue": 15,
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "d5dba3fd-e0c3-4570-b47b-f885daf8104e",
-      "name": "15 days",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2,
-      "position": [
-        3380,
-        740
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "25c8ea65-b482-4658-a483-290d0397e9dc",
-              "leftValue": "={{ Math.floor($json.timeDifference.days) }}",
-              "rightValue": 45,
-              "operator": {
-                "type": "number",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "0da9c643-fc29-4016-8ba8-c452898b9341",
-      "name": "45 days",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2,
-      "position": [
-        3380,
-        420
-      ]
     },
     {
       "parameters": {
@@ -1035,8 +679,303 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
-        2800,
+        2720,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "projectId": "voice-recorder-53502",
+        "collection": "recordings",
+        "documentId": "={{ $json.order_number }}"
+      },
+      "id": "4ac4dc61-e08b-474f-ad49-17943766f923",
+      "name": "Google Cloud Firestore2",
+      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
+      "typeVersion": 1,
+      "position": [
+        3640,
+        340
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleFirebaseCloudFirestoreOAuth2Api": {
+          "id": "eTvDQN3NeFkY1j3t",
+          "name": "Google Firebase Cloud Firestore account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "order_number",
+              "field2": "order"
+            }
+          ]
+        },
+        "joinMode": "keepNonMatches",
+        "options": {
+          "fuzzyCompare": true
+        }
+      },
+      "id": "c9d979f5-e7e6-4555-baf2-fd9da4dccdfe",
+      "name": "get only ones that didn't return",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3900,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "toRecipients": "={{ $json.contact_email }}",
+        "subject": "=🎙️ Your Personalized Audio Greeting",
+        "bodyContent": "=<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Wedding Audio Greeting</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f0f0f0;\n            padding-bottom: 1rem;\n        }\n\n        .container {\n            max-width: 600px;\n            margin: 20px auto;\n            padding: 20px;\n            background-color: #ffffff;\n            border-radius: 8px;\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n        }\n\n        .banner {\n            background-color: #123740;\n            text-align: center;\n            padding: 10px 0;\n            border-radius: 8px 8px 0 0; \n        }\n\n        .banner h2 {\n            color: #ffffff;\n            margin: 0;\n        }\n\n        h3 {\n            color: #123740;\n        }\n\n        p {\n            color: #333333;\n            line-height: 1.6;\n        }\n\n        a {\n            color: #006400;\n            text-decoration: none;\n        }\n\n        a:hover {\n            text-decoration: underline;\n        }\n\n        .button {\n            display: inline-block;\n            padding: 10px 20px;\n            background-color: #123740;\n            color: #ffffff;\n            text-decoration: none;\n            margin-bottom: 15px;\n            border-radius: 5px;\n            transition: background-color 0.2s ease; /* Add smooth color transition on hover */\n        }\n        .button:hover {\n            background-color: #0c2227; /* Darker green on hover */\n        }\n\n        .message-examples {\n            margin-top: 20px;\n            color: #555555;\n        }\n\n\n        .signature {\n            margin-top: 40px;\n            text-align: right;\n        }\n        \n        .test {\n            display: flex;\n            align-items: center;\n            gap: 8px;\n            justify-content: flex-end; /* Align content to the right */\n        }\n\n        .signature p {\n            font-size: 14px;\n            color: #333333;\n            line-height: 0;\n        }\n\n        .signature span {\n            display: inline-block;\n            margin-right: 10px;\n        }\n\n        .signature img {\n            height: 20px;\n            width: auto;\n            padding-bottom: 4px;\n            padding-right: 4px;\n        }\n        \n        .record-button-div {\n            display: flex;\n            justify-content: center;\n        }\n\n    </style>\n</head>\n<body>\n    <div class=\"banner\">\n        <h2>Voice Keepsakes</h2>\n<img src=\"https://i.ibb.co/87kzVTK/test.png\">\n\n    </div>\n    <div class=\"container\">\n        <h3>Hey {{ $('Shopify').item.json.customer.first_name }} 👋,</h3>\n        <p>As part of the audio guest book experience, you get the opportunity to record a custom greeting that\n            will play when guests pick up the phone.</p>\n        <div class=\"record-button-div\"><a href=\"https://voice-recorder-53502.web.app/?orderId={{ $json.encoded }}\" target=\"_blank\" class=\"button\">Record Your Message</a></div>\n        <p>If you could do this by <b>{{ $('get human readable date').item.json.uploadDeadline }}</b>, then we can load this on your phone and get it to you in\n            time for your event on the {{ $('get human readable date').item.json.delDate }} 🙂 </p>\n\n        <div class=\"message-examples\">\n            <p>Here are some examples if you need some help with what kind of things to say,</p>\n            <ul>\n                <li>\"Hello, dear friends and family! Thank you for being a part of our special day. We are so grateful\n                    to have you here celebrating with us. Please leave a message with your thoughts, wishes, or advice\n                    for us after the beep. We can't wait to hear your voices and cherish these memories forever.\"</li>\n                <li>\"Hey there, amazing people! We're overjoyed that you're here to celebrate this magical day with us.\n                    Leave us a message after the beep, and don't hold back! Share your well wishes, funny stories, or\n                    any advice you have for us. We promise to cherish every word and maybe even have a laugh or two\n                    along the way!\"</li>\n                <li>\"Hello, everyone! Your presence means the world to us. We're so happy to have you here as we start\n                    this incredible journey together. Share your love, your hopes, or any wisdom you'd like to pass on\n                    after the beep. Your words will be a treasure for us, and we can't thank you enough for being a part\n                    of our special day.\"</li>\n                <li>\"Hey, friends and family! It's us, [Couple's Names]. We're beyond excited to have you here, and we'd\n                    love to hear your thoughts, stories, or any crazy advice you have for us. Don't be shy; be as\n                    creative and unique as you'd like! After the beep, leave your message, and we can't wait to listen\n                    and laugh together later. Thanks for being awesome!\"</li>\n            </ul>\n        </div>\n\n        <p>Just reply to this email if you need any help or have any questions 😄</p>\n        <div class=\"signature\">\n            <p>\n                <span>Kind regards,</span>\n            </p>\n            <div class=\"test\">\n                <img src=\"https://i.ibb.co/pvd4WSb/test-1.png\">\n                <p><span>Voice Keepsakes</span></p>\n            </div>\n        </div>\n    </div>\n</body>\n\n</html> ",
+        "additionalFields": {
+          "bccRecipients": "wade@voicekeepsakes.com.au",
+          "bodyContentType": "html"
+        }
+      },
+      "id": "cd98c1d3-c03a-4fd9-8ba6-3205c14c0b5c",
+      "name": "Microsoft Outlook5",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        4780,
+        220
+      ],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "kk1sPj8USL1RL0GY",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "\nif(Math.floor($input.item.json.timeDifference.days) === 45){\nreturn $('Filter').item;\n  \n}\nreturn null;"
+      },
+      "id": "9c8b97bb-b497-4043-a409-700690288eea",
+      "name": "45Days",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3380,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formatDate(inputDate) {\nconst months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];\n\n    \n    const dateParts = inputDate.split('/');\n    const year = dateParts[0];\n    const month = months[parseInt(dateParts[1], 10) - 1];\n    const day = parseInt(dateParts[2], 10);\n\n    const ordinalSuffix = (day) => {\n        if (day >= 11 && day <= 13) {\n            return 'th';\n        }\n        switch (day % 10) {\n            case 1:\n                return 'st';\n            case 2:\n                return 'nd';\n            case 3:\n                return 'rd';\n            default:\n                return 'th';\n        }\n    };\n\n    const formattedDate = `the ${day}${ordinalSuffix(day)} of ${month}`;\n    return formattedDate;\n}\n\nconst deadline = new Date($('Filter').item.json.formattedDate);\ndeadline.setDate(deadline.getDate() - 12);\n$input.item.json.uploadDeadline = formatDate(deadline.toISOString().split('T')[0].replaceAll('-', '/'));\n$input.item.json.test = $('Filter').item.json.formattedDate\n$input.item.json.delDate = formatDate($('Filter').item.json.formattedDate);\n\nreturn $input.item;"
+      },
+      "id": "ed5eb121-3143-4d8c-b7cf-35de27b4ed65",
+      "name": "get human readable date",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4360,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\nfunction base64Encode(str) {\n  const buffer = Buffer.from(str, 'utf-8');\n  return buffer.toString('base64');\n}\n$input.item.json.encoded = base64Encode($('Shopify').item.json.order_number.toString())\nreturn $input.item;"
+      },
+      "id": "a9419937-7db3-4866-9b94-4ae17900c02e",
+      "name": "get encoded order number",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4560,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "\nif(Math.floor($input.item.json.timeDifference.days) === 30){\nreturn $('Filter').item;\n  \n}\nreturn null;"
+      },
+      "id": "45854ad0-2b09-41f4-b25f-1f9e7df5fb28",
+      "name": "30Days",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3380,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "projectId": "voice-recorder-53502",
+        "collection": "recordings",
+        "documentId": "={{ $json.order_number }}"
+      },
+      "id": "fde3b484-db45-411f-af93-27cbc3cdc39e",
+      "name": "Google Cloud Firestore",
+      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        640
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleFirebaseCloudFirestoreOAuth2Api": {
+          "id": "eTvDQN3NeFkY1j3t",
+          "name": "Google Firebase Cloud Firestore account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "order_number",
+              "field2": "order"
+            }
+          ]
+        },
+        "joinMode": "keepNonMatches",
+        "options": {
+          "fuzzyCompare": true
+        }
+      },
+      "id": "28243966-c5ba-4eeb-81b0-5bbeea1c7c6e",
+      "name": "get only ones that didn't return1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3920,
         560
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formatDate(inputDate) {\nconst months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];\n\n    \n    const dateParts = inputDate.split('/');\n    const year = dateParts[0];\n    const month = months[parseInt(dateParts[1], 10) - 1];\n    const day = parseInt(dateParts[2], 10);\n\n    const ordinalSuffix = (day) => {\n        if (day >= 11 && day <= 13) {\n            return 'th';\n        }\n        switch (day % 10) {\n            case 1:\n                return 'st';\n            case 2:\n                return 'nd';\n            case 3:\n                return 'rd';\n            default:\n                return 'th';\n        }\n    };\n\n    const formattedDate = `the ${day}${ordinalSuffix(day)} of ${month}`;\n    return formattedDate;\n}\n\nconst deadline = new Date($('Filter').item.json.formattedDate);\ndeadline.setDate(deadline.getDate() - 12);\n$input.item.json.uploadDeadline = formatDate(deadline.toISOString().split('T')[0].replaceAll('-', '/'));\n$input.item.json.test = $('Filter').item.json.formattedDate\n$input.item.json.delDate = formatDate($('Filter').item.json.formattedDate);\n\nreturn $input.item;"
+      },
+      "id": "4e941f72-7ceb-4321-87d9-ca2f4f32a662",
+      "name": "get human readable date1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4180,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\nfunction base64Encode(str) {\n  const buffer = Buffer.from(str, 'utf-8');\n  return buffer.toString('base64');\n}\n$input.item.json.encoded = base64Encode($('Shopify').item.json.order_number.toString())\nreturn $input.item;"
+      },
+      "id": "01f19f24-e342-497f-a3f6-adb64b645377",
+      "name": "get encoded order number1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4380,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "projectId": "voice-recorder-53502",
+        "collection": "recordings",
+        "documentId": "={{ $json.order_number }}"
+      },
+      "id": "b8b97c3a-9496-4185-add4-82e404ddcf07",
+      "name": "Google Cloud Firestore1",
+      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
+      "typeVersion": 1,
+      "position": [
+        3660,
+        980
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleFirebaseCloudFirestoreOAuth2Api": {
+          "id": "eTvDQN3NeFkY1j3t",
+          "name": "Google Firebase Cloud Firestore account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "order_number",
+              "field2": "order"
+            }
+          ]
+        },
+        "joinMode": "keepNonMatches",
+        "options": {
+          "fuzzyCompare": true
+        }
+      },
+      "id": "b130cb95-de1e-45f3-ad71-246f4db9dff0",
+      "name": "get only ones that didn't return2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3900,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formatDate(inputDate) {\nconst months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];\n\n    \n    const dateParts = inputDate.split('/');\n    const year = dateParts[0];\n    const month = months[parseInt(dateParts[1], 10) - 1];\n    const day = parseInt(dateParts[2], 10);\n\n    const ordinalSuffix = (day) => {\n        if (day >= 11 && day <= 13) {\n            return 'th';\n        }\n        switch (day % 10) {\n            case 1:\n                return 'st';\n            case 2:\n                return 'nd';\n            case 3:\n                return 'rd';\n            default:\n                return 'th';\n        }\n    };\n\n    const formattedDate = `the ${day}${ordinalSuffix(day)} of ${month}`;\n    return formattedDate;\n}\n\nconst deadline = new Date($('Filter').item.json.formattedDate);\ndeadline.setDate(deadline.getDate() - 12);\n$input.item.json.uploadDeadline = formatDate(deadline.toISOString().split('T')[0].replaceAll('-', '/'));\n$input.item.json.test = $('Filter').item.json.formattedDate\n$input.item.json.delDate = formatDate($('Filter').item.json.formattedDate);\n\nreturn $input.item;"
+      },
+      "id": "a600555d-b1c3-4774-8134-30b66910ec8f",
+      "name": "get human readable date2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4160,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\nfunction base64Encode(str) {\n  const buffer = Buffer.from(str, 'utf-8');\n  return buffer.toString('base64');\n}\n$input.item.json.encoded = base64Encode($('Shopify').item.json.order_number.toString())\nreturn $input.item;"
+      },
+      "id": "845fc33b-1dc2-4117-90d6-378594c5a1d7",
+      "name": "get encoded order number2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4360,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "\nif(Math.floor($input.item.json.timeDifference.days) === 15){\nreturn $('Filter').item;\n  \n}\nreturn null;"
+      },
+      "id": "dc223530-639d-4d2e-9a10-eb94241257f7",
+      "name": "15Days",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3360,
+        880
       ]
     }
   ],
@@ -1061,6 +1000,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-24T22:16:28.000Z",
-  "versionId": "389db756-4b74-465e-b282-05dcdb038e5d"
+  "updatedAt": "2024-03-01T07:00:33.000Z",
+  "versionId": "c610c390-4f14-486b-93dd-58b3f4aa2807"
 }
