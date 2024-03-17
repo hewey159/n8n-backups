@@ -1,0 +1,81 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-17T05:17:41.955Z",
+  "id": "6do80UIdKHGFUpAo",
+  "meta": null,
+  "name": "Error workflow email",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7fd56a8b-afc1-4c8c-962c-9011f0192dc4",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "toRecipients": "heweywade@hotmail.com",
+        "subject": "Something went wrong with one of the automations",
+        "bodyContent": "Something went wrong with one of the automations visit https://automation.voicekeepsakes.com.au/",
+        "additionalFields": {
+          "bccRecipients": "wade@voicekeepsakes.com.au"
+        }
+      },
+      "id": "81af3811-1d12-492b-8b31-13c606999181",
+      "name": "Microsoft Outlook",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        540
+      ],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "kk1sPj8USL1RL0GY",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Error Trigger": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      },
+      {
+        "json": {
+          "name": "Second item",
+          "code": 2
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-03-17T05:18:14.000Z",
+  "versionId": "bac4c93a-a00e-47c5-a075-d2c6e65d404b"
+}
