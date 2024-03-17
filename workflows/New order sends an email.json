@@ -650,11 +650,14 @@
     ]
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "6do80UIdKHGFUpAo"
   },
   "staticData": {
     "node:Shopify Trigger": {
-      "webhookId": 1473624670500
+      "webhookId": 1485075284260
     }
   },
   "tags": [
@@ -672,6 +675,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-02-21T05:25:11.000Z",
-  "versionId": "b04beaff-aa8d-4a47-975b-ed2b73b8c9a3"
+  "updatedAt": "2024-03-17T05:18:44.000Z",
+  "versionId": "7a54608c-3ac5-4c39-9787-2a2b5219cf4b"
 }
