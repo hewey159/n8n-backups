@@ -984,7 +984,8 @@
     "executionOrder": "v1",
     "timezone": "Australia/Adelaide",
     "saveManualExecutions": true,
-    "callerPolicy": "workflowsFromSameOwner"
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "6do80UIdKHGFUpAo"
   },
   "staticData": {
     "node:Schedule Trigger": {
@@ -1000,6 +1001,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-03-01T07:00:33.000Z",
-  "versionId": "c610c390-4f14-486b-93dd-58b3f4aa2807"
+  "updatedAt": "2024-03-17T05:18:33.000Z",
+  "versionId": "ef059ba2-7ca3-46bf-9362-f50ed704606c"
 }
