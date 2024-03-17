@@ -49,12 +49,12 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Shopify",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Shopify",
+            "node": "HTTP Request2",
             "type": "main",
             "index": 0
           }
@@ -115,6 +115,61 @@
           }
         ]
       ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-01-18T10:59:53.631Z",
@@ -124,7 +179,7 @@
   "nodes": [
     {
       "parameters": {
-        "url": "https://auspost.com.au/mypost/beta/track/static/js/main.2485e51e.js",
+        "url": "=https://auspost.com.au/mypost/track/static/js/{{ $json.filename }}",
         "options": {}
       },
       "id": "d3cdbdb8-c66e-4e75-9efa-d44092535547",
@@ -132,8 +187,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1480,
-        360
+        2780,
+        380
       ]
     },
     {
@@ -154,7 +209,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
-        1760,
+        3300,
         360
       ]
     },
@@ -221,7 +276,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2760,
+        4300,
         420
       ]
     },
@@ -235,7 +290,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2360,
+        3900,
         420
       ]
     },
@@ -249,7 +304,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2540,
+        4080,
         420
       ]
     },
@@ -298,7 +353,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
-        2980,
+        4520,
         420
       ]
     },
@@ -314,7 +369,7 @@
       "type": "n8n-nodes-base.shopify",
       "typeVersion": 1,
       "position": [
-        1480,
+        1700,
         540
       ],
       "credentials": {
@@ -347,7 +402,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
-        1760,
+        1980,
         540
       ]
     },
@@ -380,7 +435,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1940,
+        2160,
         540
       ]
     },
@@ -395,8 +450,124 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2.1,
       "position": [
-        2180,
+        3720,
         420
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://auspost.com.au/mypost/track/search",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "910965e7-5570-4a15-8f08-2d91bcd9c18c",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1460,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "sourceData": "binary",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "headers",
+              "cssSelector": "script",
+              "returnValue": "attribute",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {
+          "trimValues": false
+        }
+      },
+      "id": "5be50e0a-e53b-47dc-bc77-5dfd6e11fee5",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9a28fb6b-b094-44b9-86fe-2c5ba2c2b945",
+              "leftValue": "={{ $json.src }}",
+              "rightValue": "/main",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7586ec60-e74c-445d-bfb6-77bc90132ef8",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1900,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "headers",
+        "options": {}
+      },
+      "id": "c2a826eb-b012-48ad-ba45-dda4b7b39fb0",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "filename",
+              "stringValue": "={{ $json.src.split('/').pop() }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "47b8bcca-38c5-4887-a21c-aa298eec963e",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2120,
+        260
       ]
     }
   ],
@@ -418,6 +589,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-23T01:42:27.000Z",
-  "versionId": "a12ad829-300c-4586-b43a-0a512731b826"
+  "updatedAt": "2024-03-17T06:38:24.000Z",
+  "versionId": "f9789f8d-91ee-4029-8e70-b26ea9c4834f"
 }
