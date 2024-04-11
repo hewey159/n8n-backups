@@ -40,6 +40,11 @@
             "node": "15Days",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "10Days",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -357,6 +362,77 @@
         [
           {
             "node": "Microsoft Outlook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get only ones that didn't return3": {
+      "main": [
+        [
+          {
+            "node": "Filter5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get human readable date3": {
+      "main": [
+        [
+          {
+            "node": "get encoded order number3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get encoded order number3": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Cloud Firestore3": {
+      "main": [
+        [
+          {
+            "node": "get only ones that didn't return3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Filter5": {
+      "main": [
+        [
+          {
+            "node": "get human readable date3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "10Days": {
+      "main": [
+        [
+          {
+            "node": "get only ones that didn't return3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google Cloud Firestore3",
             "type": "main",
             "index": 0
           }
@@ -1147,6 +1223,154 @@
           "name": "Microsoft Outlook account"
         }
       }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "\nif(Math.floor($input.item.json.timeDifference.days) === 10){\nreturn $('Filter').item;\n  \n}\nreturn null;"
+      },
+      "id": "0f98518d-532d-4de8-9351-0c63efd28ad7",
+      "name": "10Days",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3360,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "order_number",
+              "field2": "order"
+            }
+          ]
+        },
+        "joinMode": "keepNonMatches",
+        "options": {
+          "fuzzyCompare": true
+        }
+      },
+      "id": "90aa996b-c0bf-46a3-91e5-7df565875c91",
+      "name": "get only ones that didn't return3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3840,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formatDate(inputDate) {\nconst months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];\n\n    \n    const dateParts = inputDate.split('/');\n    const year = dateParts[0];\n    const month = months[parseInt(dateParts[1], 10) - 1];\n    const day = parseInt(dateParts[2], 10);\n\n    const ordinalSuffix = (day) => {\n        if (day >= 11 && day <= 13) {\n            return 'th';\n        }\n        switch (day % 10) {\n            case 1:\n                return 'st';\n            case 2:\n                return 'nd';\n            case 3:\n                return 'rd';\n            default:\n                return 'th';\n        }\n    };\n\n    const formattedDate = `the ${day}${ordinalSuffix(day)} of ${month}`;\n    return formattedDate;\n}\n\nconst deadline = new Date($('Filter').item.json.formattedDate);\ndeadline.setDate(deadline.getDate() - 12);\n$input.item.json.uploadDeadline = formatDate(deadline.toISOString().split('T')[0].replaceAll('-', '/'));\n$input.item.json.test = $('Filter').item.json.formattedDate\n$input.item.json.delDate = formatDate($('Filter').item.json.formattedDate);\n\nreturn $input.item;"
+      },
+      "id": "7e527590-c74e-46b6-9402-cd0d87271047",
+      "name": "get human readable date3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4300,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Add a new field called 'myNewField' to the JSON of the item\nfunction base64Encode(str) {\n  const buffer = Buffer.from(str, 'utf-8');\n  return buffer.toString('base64');\n}\n$input.item.json.encoded = base64Encode($('Shopify').item.json.order_number.toString())\nreturn $input.item;"
+      },
+      "id": "c80d34d6-708c-45aa-b357-53ea33217c2b",
+      "name": "get encoded order number3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4500,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "projectId": "voice-recorder-53502",
+        "collection": "recordings",
+        "documentId": "={{ $json.order_number }}"
+      },
+      "id": "761a1b03-2434-446f-b5c4-4e33f29dd4c7",
+      "name": "Google Cloud Firestore3",
+      "type": "n8n-nodes-base.googleFirebaseCloudFirestore",
+      "typeVersion": 1,
+      "position": [
+        3600,
+        1320
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleFirebaseCloudFirestoreOAuth2Api": {
+          "id": "eTvDQN3NeFkY1j3t",
+          "name": "Google Firebase Cloud Firestore account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "3b80643d-0286-48b2-94a3-0ce0d41cd504",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "6568f6b6-2b66-483b-a275-74e429f4a330",
+      "name": "Filter5",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        4060,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "toRecipients": "heweywade@hotmail.com",
+        "subject": "ring customer -  Customer is on last reminder!!",
+        "bodyContent": "=Might want to ring them?? {{ $('Shopify').item.json.email }} \n{{ $('Shopify').item.json.order_number }}",
+        "additionalFields": {
+          "bccRecipients": "wade@voicekeepsakes.com.au"
+        }
+      },
+      "id": "e8a40d6b-22b9-483a-aca6-10ff9d136684",
+      "name": "Microsoft Outlook4",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        4760,
+        1240
+      ],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "kk1sPj8USL1RL0GY",
+          "name": "Microsoft Outlook account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1171,6 +1395,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-03-26T21:36:42.000Z",
-  "versionId": "62142a38-954b-4f8e-a229-cfa86206beca"
+  "updatedAt": "2024-04-10T22:39:33.000Z",
+  "versionId": "9ae111c5-3651-4cfd-9f95-11d27aef5424"
 }
