@@ -1,0 +1,224 @@
+{
+  "active": true,
+  "connections": {
+    "n8n Form Trigger": {
+      "main": [
+        [
+          {
+            "node": "Shopify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shopify": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "GetDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetDate": {
+      "main": [
+        [
+          {
+            "node": "Get human readable date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get human readable date": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-25T06:08:01.468Z",
+  "id": "ZlAGHsnq3QWBjXd1",
+  "meta": null,
+  "name": "Send tracking email",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "e1d84893-ebf0-44ba-b634-073d8e87e9a5",
+        "formTitle": "Send Tracking Email",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "ShopifyOrderNumber",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Tracking  number",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ad2b0dbe-28e3-48f6-8f22-81918dfc842f",
+      "name": "n8n Form Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        580
+      ],
+      "webhookId": "dff6280e-93d7-4b13-829d-f2725b86adb6"
+    },
+    {
+      "parameters": {
+        "authentication": "accessToken",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "2985720c-fbf3-41ef-affc-8b287f804de0",
+      "name": "Shopify",
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        580
+      ],
+      "credentials": {
+        "shopifyAccessTokenApi": {
+          "id": "zKYJyGyRGR4R2Vmm",
+          "name": "Shopify Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "0e1e8b75-a8b6-4132-8849-bf5a6d28eb16",
+              "leftValue": "={{ $json.order_number }}",
+              "rightValue": "={{ $('n8n Form Trigger').item.json.ShopifyOrderNumber }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "f22a2af5-7cac-41fb-905c-73c664adc207",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1820,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "toRecipients": "={{ $json.contact_email }}",
+        "subject": "Your audio guest book is on its way! 🎵🎉",
+        "bodyContent": "=<body dir=\"ltr\">\n<div style=\"background-color: rgb(18, 55, 64); margin: 0px; padding-top: 10px; padding-bottom: 10px; border-radius: 8px;\">\n<h2 style=\"text-align: center; text-indent: 0px; margin: 0px; color: white;\"><span style=\"font-family: Arial, sans-serif, serif, EmojiFont;\">Voice Keepsakes</span></h2>\n<div style=\"text-align: center; text-indent: 0px; margin: 0px; font-family: Arial, sans-serif, serif, EmojiFont; font-size: 15px; color: rgb(36, 36, 36);\">\n<img style=\"margin: 0px; vertical-align: top;\" src=\"https://i.ibb.co/87kzVTK/test.png\"></div>\n</div>\n<div style=\"background-color: white; margin: 20px auto; padding: 10px; border-radius: 8px; max-width: 600px;\">\n<h3 class=\"elementToProof\" style=\"text-align: left; text-indent: 0px; color: rgb(18, 55, 64);\">\n<span style=\"font-family: Arial, sans-serif, serif, EmojiFont;\">Hey {{ $json.customer.first_name }} 👋,</span></h3>\n<p class=\"elementToProof\" style=\"text-align: left; text-indent: 0px; line-height: 1.6; margin-top: 0px; margin-bottom: 0px; color: rgb(51, 51, 51);\">\n<span style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; font-size: 12pt; color: black;\">Your audio guest book for your event on {{ $json.delDate }} got sent off today!</span></p>\n<p style=\"text-align: left; text-indent: 0px; line-height: 1.6; margin-top: 0px; margin-bottom: 0px; color: rgb(51, 51, 51);\">\n<span style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; font-size: 12pt; color: black;\"><br>\n</span></p>\n<p class=\"elementToProof\" style=\"text-align: left; text-indent: 0px; line-height: 1.6; margin-top: 0px; margin-bottom: 0px;\">\n<span style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; font-size: 12pt; color: black;\">To follow along and see where the phone is click below</span></p>\n<p class=\"elementToProof\" style=\"text-align: center; text-indent: 0px; line-height: 1.6; font-family: &quot;Times New Roman&quot;; font-size: 12pt; color: rgb(0, 0, 0);\">\n    <span style=\"font-family: Arial, sans-serif; color: rgb(255, 255, 255); background-color: rgb(18, 55, 64);\"><a href=\"https://auspost.com.au/mypost/track/details/{{ $('n8n Form Trigger').item.json['Tracking  number'] }}\" target=\"_blank\" id=\"OWAa5161b79-5006-3fb8-f950-7186ba5700f7\" class=\"button OWAAutoLink\" style=\"color: rgb(255, 255, 255); text-decoration: none; display: inline-block; pa: 0px 0px 0px; padding: 10px 20px; background-color: #dc1928; border-radius: 5px; text-align: left;\">Track your phone here</a></span></p>\n<div style=\"text-align: left; text-indent: 0px; margin: 0px; font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; font-size: 12pt; color: black;\">\n</div>\n<div class=\"elementToProof\" style=\"text-align: left; text-indent: 0px; margin: 0px; font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; font-size: 12pt; color: black;\">\nOnce you receive phone, there is instructions inside on how to turn it on and return it back to us after your event. Once the phone arrives back to us allow 2-3 days to process the audio files and you'll receive a link to all your guests' messages.<br>\n<br>\n</div>\n<p style=\"text-align: left; text-indent: 0px; line-height: 1.6; margin-top: 0px; margin-bottom: 0px;\">\n<span style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; font-size: 12pt; color: black;\">If you have any questions or troubles on the day, feel free to email or phone us on (08) 7228 5221.<br>\n<br>\n</span></p>\n<p style=\"text-align: left; text-indent: 0px; line-height: 1.6; margin-top: 0px; margin-bottom: 0px;\">\n<span style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; font-size: 12pt; color: black;\">Have an amazing day and we hope everything runs smooth for you 😄</span></p>\n<p style=\"text-align: left; text-indent: 0px; line-height: 1.6; margin-top: 0px; margin-bottom: 0px;\">\n<span style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; font-size: 12pt; color: black;\"><br>\n</span></p>\n<p style=\"text-align: left; text-indent: 0px; line-height: 1.6; margin-top: 0px; margin-bottom: 0px;\">\n<span style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif, serif, EmojiFont; font-size: 12pt; color: black;\">Kind regards,<br>\nVoice Keepsakes</span></p>\n</div>\n<div class=\"elementToProof\" style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);\">\n<br>\n</div>\n</body>       \n",
+        "additionalFields": {
+          "bccRecipients": "wade@voicekeepsakes.com.au",
+          "bodyContentType": "html"
+        }
+      },
+      "id": "d3f47c54-fe18-4870-adf4-073196b0d2ed",
+      "name": "Microsoft Outlook",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        2480,
+        580
+      ],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "kk1sPj8USL1RL0GY",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formatDate(inputDate) {\n  // Create a Date object from the input date string\n  const dateObject = new Date(inputDate);\n  if (isNaN(dateObject)){\n    return null\n  }\n  \n\n  // Extract year, month, and day components\n  const year = dateObject.getFullYear();\n  const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Months are zero-based\n  const day = String(dateObject.getDate()).padStart(2, '0');\n\n  // Create the formatted date string in \"yyyy-mm-dd\" format\n  const formattedDate = `${year}/${month}/${day}`;\n\n  return formattedDate;\n}\n\n// Example usage:\nconst tags = $('Shopify').item.json.tags.split(','); //tags are split by ',' in shopify\nconst result = tags.map((tag) => formatDate(tag))\nconst filteredArray = result.filter(value => value !== null);\n\nif(filteredArray.length != 1){\n  $input.item.json.formattedDate = null\n}\nelse {\n  $input.item.json.formattedDate = filteredArray[0]\n}\n\n\n// const formattedDateString = formatDate(inputDateString);\n// $input.item.json.formattedDate = result\n// return { filteredArray, tags }\nreturn $input.item;"
+      },
+      "id": "a658c61e-f23f-4668-9178-48fa76318c7d",
+      "name": "GetDate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2040,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formatDate(inputDate) {\nconst months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];\n\n    \n    const dateParts = inputDate.split('/');\n    const year = dateParts[0];\n    const month = months[parseInt(dateParts[1], 10) - 1];\n    const day = parseInt(dateParts[2], 10);\n\n    const ordinalSuffix = (day) => {\n        if (day >= 11 && day <= 13) {\n            return 'th';\n        }\n        switch (day % 10) {\n            case 1:\n                return 'st';\n            case 2:\n                return 'nd';\n            case 3:\n                return 'rd';\n            default:\n                return 'th';\n        }\n    };\n\n    const formattedDate = `the ${day}${ordinalSuffix(day)} of ${month}`;\n    return formattedDate;\n}\n\nconst deadline = new Date($('GetDate').item.json.formattedDate);\ndeadline.setDate(deadline.getDate() - 12);\n$input.item.json.uploadDeadline = formatDate(deadline.toISOString().split('T')[0].replaceAll('-', '/'));\n$input.item.json.test = $('GetDate').item.json.formattedDate\n$input.item.json.delDate = formatDate($('GetDate').item.json.formattedDate);\n\nreturn $input.item;"
+      },
+      "id": "5ffbcd91-528d-4adb-8520-d08c0c7f19fa",
+      "name": "Get human readable date",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2260,
+        580
+      ]
+    }
+  ],
+  "pinData": {
+    "n8n Form Trigger": [
+      {
+        "json": {
+          "ShopifyOrderNumber": "1027",
+          "Tracking  number": "123456",
+          "submittedAt": "2024-04-25T06:29:20.371Z",
+          "formMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-04-25T08:18:52.000Z",
+  "versionId": "7ccd43d7-b226-495c-a2bc-7f8cd2bfec3a"
+}
