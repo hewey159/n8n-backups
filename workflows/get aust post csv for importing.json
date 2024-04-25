@@ -1,0 +1,413 @@
+{
+  "active": false,
+  "connections": {
+    "Shopify": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "To customer",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "From  Customer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "To customer": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "From  Customer": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Shopify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-25T08:33:18.472Z",
+  "id": "PlHUIBU33iVCJFbg",
+  "meta": null,
+  "name": "get aust post csv for importing",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "toFile",
+        "fileFormat": "csv",
+        "options": {}
+      },
+      "id": "7d2f00c5-34a9-400c-af59-c8c875c9c62b",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 2,
+      "position": [
+        2980,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "accessToken",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "084e39d8-e9f8-4e02-ae2f-f17e9792ef30",
+      "name": "Shopify",
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        400
+      ],
+      "credentials": {
+        "shopifyAccessTokenApi": {
+          "id": "zKYJyGyRGR4R2Vmm",
+          "name": "Shopify Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "b4621695-0a45-4355-8679-a40b80b6498d",
+              "leftValue": "={{ $json.order_number }}",
+              "rightValue": "={{ $('Edit Fields').item.json['Shopify Order Number'] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "9f6bcdf4-98da-4a0f-a951-a291038fbce5",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "bdd5ea15-93ea-4283-86eb-5833c0d6551b",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2560,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Send From Name",
+              "stringValue": "Wade Hewett"
+            },
+            {
+              "name": "Send From Address Line 1",
+              "stringValue": "8 Vista Court "
+            },
+            {
+              "name": "Send From Suburb",
+              "stringValue": "Hillbank"
+            },
+            {
+              "name": "Send From State",
+              "stringValue": "SA"
+            },
+            {
+              "name": "Send From Postcode",
+              "stringValue": "5112"
+            },
+            {
+              "name": "Deliver To Name",
+              "stringValue": "={{ $json.shipping_address.first_name }} {{ $json.shipping_address.last_name }}"
+            },
+            {
+              "name": "Deliver To Address Line 1",
+              "stringValue": "={{ $json.shipping_address.address1 }}"
+            },
+            {
+              "name": "Deliver To Suburb",
+              "stringValue": "={{ $json.shipping_address.city }}"
+            },
+            {
+              "name": "Deliver To State",
+              "stringValue": "={{ $json.shipping_address.province_code }}"
+            },
+            {
+              "name": "Deliver To Postcode",
+              "stringValue": "={{ $json.shipping_address.zip }}"
+            },
+            {
+              "name": "Deliver To Phone Number",
+              "stringValue": "={{ $json.shipping_address.phone }}"
+            },
+            {
+              "name": "Deliver To Email Address",
+              "stringValue": "={{ $json.customer.email }}"
+            },
+            {
+              "name": "Item Packaging Type",
+              "stringValue": "OWN_PACKAGING"
+            },
+            {
+              "name": "Item Length",
+              "stringValue": "40"
+            },
+            {
+              "name": "Item Width",
+              "stringValue": "30"
+            },
+            {
+              "name": "Item Height",
+              "stringValue": "16.5"
+            },
+            {
+              "name": "Item Weight",
+              "stringValue": "4"
+            },
+            {
+              "name": "Send From Phone Number",
+              "stringValue": "0401969323"
+            },
+            {
+              "name": "Send From Email Address",
+              "stringValue": "wade@voicekeepsakes.com.au"
+            },
+            {
+              "name": " Item Delivery Service",
+              "stringValue": "EXP"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "3470c2b3-83cd-4d26-934a-62f8685561ca",
+      "name": "To customer",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2280,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Send From Name",
+              "stringValue": "={{ $json.shipping_address.first_name }} {{ $json.shipping_address.last_name }}"
+            },
+            {
+              "name": "Send From Address Line 1",
+              "stringValue": "={{ $json.shipping_address.address1 }}"
+            },
+            {
+              "name": "Send From Suburb",
+              "stringValue": "={{ $json.shipping_address.city }}"
+            },
+            {
+              "name": "Send From State",
+              "stringValue": "={{ $json.shipping_address.province_code }}"
+            },
+            {
+              "name": "Send From Postcode",
+              "stringValue": "={{ $json.shipping_address.zip }}"
+            },
+            {
+              "name": "Send From Phone Number",
+              "stringValue": "={{ $json.shipping_address.phone }}"
+            },
+            {
+              "name": "Send From Email Address",
+              "stringValue": "={{ $json.customer.email }}"
+            },
+            {
+              "name": "Deliver To Name",
+              "stringValue": "=Wade Hewett"
+            },
+            {
+              "name": "Deliver To Address Line 1",
+              "stringValue": "=8 Vista Court"
+            },
+            {
+              "name": "Deliver To Suburb",
+              "stringValue": "=Hillbank"
+            },
+            {
+              "name": "Deliver To State",
+              "stringValue": "=SA"
+            },
+            {
+              "name": "Deliver To Postcode",
+              "stringValue": "=5112"
+            },
+            {
+              "name": "Deliver To Phone Number",
+              "stringValue": "=0401969323"
+            },
+            {
+              "name": "Deliver To Email Address",
+              "stringValue": "=wade@voicekeepsakes.com.au"
+            },
+            {
+              "name": "Item Packaging Type",
+              "stringValue": "OWN_PACKAGING"
+            },
+            {
+              "name": "Item Length",
+              "stringValue": "40"
+            },
+            {
+              "name": "Item Width",
+              "stringValue": "30"
+            },
+            {
+              "name": "Item Height",
+              "stringValue": "16.5"
+            },
+            {
+              "name": "Item Weight",
+              "stringValue": "4"
+            },
+            {
+              "name": " Item Delivery Service",
+              "stringValue": "PP"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "95dfadd1-aec0-44a1-abae-b636a3e3233e",
+      "name": "From  Customer",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2280,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Shopify Order Number",
+              "stringValue": "1027"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9f0398d0-5869-4a85-9971-be73eab37abe",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1440,
+        400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "541897cd-859d-4db7-b444-5cf3b7c8e9bf",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        400
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-25T10:04:07.000Z",
+  "versionId": "0cdf3015-4388-4fcc-a0a6-493f9bde7efa"
+}
