@@ -1,0 +1,188 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Microsoft OneDrive1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft OneDrive1": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-30T23:32:19.872Z",
+  "id": "JesGaFSFLfcYTkvh",
+  "meta": null,
+  "name": "Chloe birthday emails",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10,
+              "triggerAtMinute": 25
+            }
+          ]
+        }
+      },
+      "id": "5f7544d7-aefe-4189-b3ff-9525cc34f690",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        1280,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": "01NA774FZ7C2DHNSMC4NCYJDBYLGFOZ3OH"
+      },
+      "id": "22c12b96-4676-44f5-98c4-697694367e1c",
+      "name": "Microsoft OneDrive1",
+      "type": "n8n-nodes-base.microsoftOneDrive",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        600
+      ],
+      "credentials": {
+        "microsoftOneDriveOAuth2Api": {
+          "id": "vL3h0nWW65SyOrUs",
+          "name": "Microsoft Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "query": "Birthdays"
+      },
+      "id": "374772df-007f-42ee-9e68-4f3844cc1ff6",
+      "name": "Microsoft OneDrive",
+      "type": "n8n-nodes-base.microsoftOneDrive",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        180
+      ],
+      "credentials": {
+        "microsoftOneDriveOAuth2Api": {
+          "id": "vL3h0nWW65SyOrUs",
+          "name": "Microsoft Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fileFormat": "csv",
+        "options": {}
+      },
+      "id": "167711bd-f6d6-4977-9d00-672e4c3b3945",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function checkDate(inputDate) {\n    // Get today's date in UTC\n    var todayUTC = new Date();\n\n    // Convert UTC to Adelaide time\n    var adelaideTimeOffset = 10.5 * 60; // Adelaide time offset in minutes (10.5 hours ahead of UTC)\n    var adelaideTime = new Date(todayUTC.getTime() + adelaideTimeOffset * 60000);\n\n    // Format Adelaide date\n    var dd = String(adelaideTime.getDate());\n    var mm = String(adelaideTime.toLocaleString('default', { month: 'short' }));\n\n    var adelaideDate = dd + '-' + mm;\n    $input.item.json.adelaideTime = adelaideDate;\n    // Check if input date matches Adelaide's date\n    if (inputDate === adelaideDate) {\n        return true;\n    } else {\n        return false;\n    }\n}\n\n$input.item.json.isBirthday = checkDate($input.item.json.Birthday);\nreturn $input.item;\n"
+      },
+      "id": "dcb8efab-ec0f-46d1-ade9-30a1dfdbd23e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2180,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "d747024a-9dfe-4bf8-8910-73008e8fa8d5",
+              "leftValue": "={{ $json.isBirthday }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ec337095-64e2-4660-8a74-e72a346d05a2",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2400,
+        600
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "6do80UIdKHGFUpAo"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-30T23:58:36.000Z",
+  "versionId": "5eccaa43-e320-404b-ad6d-f0f08341c75b"
+}
