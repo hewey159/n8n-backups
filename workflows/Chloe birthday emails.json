@@ -44,6 +44,17 @@
           }
         ]
       ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Microsoft Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-04-30T23:32:19.872Z",
@@ -67,14 +78,14 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.1,
       "position": [
-        1280,
+        1440,
         600
       ]
     },
     {
       "parameters": {
         "operation": "download",
-        "fileId": "01NA774FZ7C2DHNSMC4NCYJDBYLGFOZ3OH"
+        "fileId": "01NA774F5MXHMCZER25ZFYIRGT227E7YUI"
       },
       "id": "22c12b96-4676-44f5-98c4-697694367e1c",
       "name": "Microsoft OneDrive1",
@@ -128,7 +139,7 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "function checkDate(inputDate) {\n    // Get today's date in UTC\n    var todayUTC = new Date();\n\n    // Convert UTC to Adelaide time\n    var adelaideTimeOffset = 10.5 * 60; // Adelaide time offset in minutes (10.5 hours ahead of UTC)\n    var adelaideTime = new Date(todayUTC.getTime() + adelaideTimeOffset * 60000);\n\n    // Format Adelaide date\n    var dd = String(adelaideTime.getDate());\n    var mm = String(adelaideTime.toLocaleString('default', { month: 'short' }));\n\n    var adelaideDate = dd + '-' + mm;\n    $input.item.json.adelaideTime = adelaideDate;\n    // Check if input date matches Adelaide's date\n    if (inputDate === adelaideDate) {\n        return true;\n    } else {\n        return false;\n    }\n}\n\n$input.item.json.isBirthday = checkDate($input.item.json.Birthday);\nreturn $input.item;\n"
+        "jsCode": "function checkDate(inputDate) {\n    // Get today's date in UTC\n    var todayUTC = new Date();\n    $input.item.json.test = todayUTC.getTime();\n    // Convert UTC to Adelaide time\n    var adelaideTimeOffset = 10.5 * 60 * 60 * 1000; // Adelaide time offset in milliseconds (10.5 hours ahead of UTC)\n    $input.item.json.adelaideOffset = adelaideTimeOffset\n    var adelaideTime = new Date(todayUTC.getTime() + adelaideTimeOffset);\n  \n    // Format Adelaide date\n    var dd = String(adelaideTime.getUTCDate());\n    var mm = String(adelaideTime.toLocaleString('default', { month: 'short' }));\n\n    var adelaideDate = dd + '-' + mm;\n    $input.item.json.adelaideTime = adelaideDate;\n    // Check if input date matches Adelaide's date\n    if (inputDate === adelaideDate) {\n        return true;\n    } else {\n        return false;\n    }\n}\n\n$input.item.json.isBirthday = checkDate($input.item.json.Birthday);\nreturn $input.item;\n"
       },
       "id": "dcb8efab-ec0f-46d1-ade9-30a1dfdbd23e",
       "name": "Code",
@@ -171,6 +182,28 @@
         2400,
         600
       ]
+    },
+    {
+      "parameters": {
+        "toRecipients": "heweywade@hotmail.com",
+        "subject": "Its your birthday",
+        "bodyContent": "=congrats on your birthday {{ $json.﻿Name }}! ",
+        "additionalFields": {}
+      },
+      "id": "80e4009d-6dbe-4237-9ffa-e1e5cf80aedf",
+      "name": "Microsoft Outlook",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        2620,
+        600
+      ],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "n0YR7IN5gCyziEDy",
+          "name": "Chloe lb support"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -183,6 +216,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-04-30T23:58:36.000Z",
-  "versionId": "5eccaa43-e320-404b-ad6d-f0f08341c75b"
+  "updatedAt": "2024-05-01T09:14:52.000Z",
+  "versionId": "f3853c3a-edae-4620-86ec-90f8366056fb"
 }
