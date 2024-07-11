@@ -85,7 +85,7 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "function checkDate(inputDate) {\n    // Get today's date in UTC\n    var todayUTC = new Date();\n    $input.item.json.test = todayUTC.getTime();\n    // Convert UTC to Adelaide time\n    var adelaideTimeOffset = 10.5 * 60 * 60 * 1000; // Adelaide time offset in milliseconds (10.5 hours ahead of UTC)\n    $input.item.json.adelaideOffset = adelaideTimeOffset\n    var adelaideTime = new Date(todayUTC.getTime() + adelaideTimeOffset);\n  \n    // Format Adelaide date\n    var dd = String(adelaideTime.getUTCDate());\n    var mm = String(adelaideTime.getUTCMonth()+1);//dates arre zero  indexed\n\n    const inputSplit = inputDate.split(\"-\");\n    $input.item.json.dd = dd\n    $input.item.json.mm = mm\n    $input.item.json.split_dd = parseInt(inputSplit[inputSplit.length - 1])\n    $input.item.json.split_mm = parseInt(inputSplit[inputSplit.length - 2])\n    \n    // Check if input date matches Adelaide's date\n    if (parseInt(inputSplit[inputSplit.length - 1]) === parseInt(dd) && parseInt(inputSplit[inputSplit.length - 2]) === parseInt(mm)) {\n        return true;\n    } else {\n        return false;\n    }\n}\n\n$input.item.json.isBirthday = checkDate($input.item.json.data.birthdate);\nreturn $input.item;\n"
+        "jsCode": "function checkDate(inputDate) {\n    if(inputDate === null){\n      return false\n    }\n    // Get today's date in UTC\n    var todayUTC = new Date();\n    $input.item.json.test = todayUTC.getTime();\n    // Convert UTC to Adelaide time\n    var adelaideTimeOffset = 10.5 * 60 * 60 * 1000; // Adelaide time offset in milliseconds (10.5 hours ahead of UTC)\n    $input.item.json.adelaideOffset = adelaideTimeOffset\n    var adelaideTime = new Date(todayUTC.getTime() + adelaideTimeOffset);\n  \n    // Format Adelaide date\n    var dd = String(adelaideTime.getUTCDate());\n    var mm = String(adelaideTime.getUTCMonth()+1);//dates arre zero  indexed\n\n  \n    const inputSplit = inputDate.split(\"-\");\n    $input.item.json.dd = dd\n    $input.item.json.mm = mm\n    $input.item.json.split_dd = parseInt(inputSplit[inputSplit.length - 1])\n    $input.item.json.split_mm = parseInt(inputSplit[inputSplit.length - 2])\n    \n    // Check if input date matches Adelaide's date\n    if (parseInt(inputSplit[inputSplit.length - 1]) === parseInt(dd) && parseInt(inputSplit[inputSplit.length - 2]) === parseInt(mm)) {\n        return true;\n    } else {\n        return false;\n    }\n}\n\n$input.item.json.isBirthday = checkDate($input.item.json.data.birthdate);\n// $input.item.json.isBirthday = $input.item.json.data.birthdate ;\nreturn $input.item;\n"
       },
       "id": "dcb8efab-ec0f-46d1-ade9-30a1dfdbd23e",
       "name": "Code",
@@ -1305,6 +1305,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-25T23:14:46.000Z",
-  "versionId": "781d4eea-f662-490c-932a-3eaa74437565"
+  "updatedAt": "2024-07-11T09:13:13.000Z",
+  "versionId": "a8e39de3-3d2b-4c0f-8b78-28f204bdf043"
 }
